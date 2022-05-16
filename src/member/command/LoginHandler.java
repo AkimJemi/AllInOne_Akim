@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import member.model.Member;
 import member.service.MemberService;
 import mvc.command.CommandHandler;
-
 public class LoginHandler implements CommandHandler {
 	private final static String LOGIN_FORM = "WEB-INF/init/login.jsp";
 

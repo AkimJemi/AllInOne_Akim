@@ -36,11 +36,7 @@ public class AdminHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest rq,
 			HttpServletResponse rp) {
-		
-		
-		
 		return ADMIN_FORM;
-
 	}
 
 }

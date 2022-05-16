@@ -5,15 +5,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
 
-public class LoginHandler2 implements CommandHandler {
+public class memberListHandler implements CommandHandler {
+	private final static String MEMBER_LIST_FORM = "/WEB-INF/member/memberList.jsp";
+	
 
 	@Override
 	public String process(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		System.out.println("memberListHandler");
 		
-		
-		System.out.println("process");
-		return null;
+		return MEMBER_LIST_FORM;
 	}
-
 }

@@ -17,18 +17,12 @@
 					<a href="admin.do">관리자 페이지</a>
 				</th>
 				<th>
-					<a href="">예약명단</a>
+					<a href="member/list.do">회원 명단</a>
 				</th>
-			</tr>
-			<tr>
 			</tr>
 			<tr>
 			</tr>
 		</table>
 	</center>
-
-
-
-
 </body>
 </html>
