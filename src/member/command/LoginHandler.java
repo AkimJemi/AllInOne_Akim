@@ -16,13 +16,16 @@ public class LoginHandler implements CommandHandler {
 		if (rq.getMethod().equalsIgnoreCase("POST")) {
 			return processSubmit(rq, rp);
 		} else if (rq.getMethod().equalsIgnoreCase("GET")) {
-			return processForm();
+			return processForm(rq, rp);
 		} else {
 			return null;
 		}
 	}
 
-	private String processForm() {
+	private String processForm(HttpServletRequest rq, HttpServletResponse rp) {
+		if(rq.getParameter("id") !=null) {
+			return processSubmit(rq, rp);
+		}
 		return LOGIN_FORM;
 	}
 

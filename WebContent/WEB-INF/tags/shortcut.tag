@@ -5,7 +5,7 @@ key['w'] = "/admin/entry/post/";
 key['e'] = "/admin/skin/edit/";
 key['r'] = "/admin/plugin/refererUrlLog/";
 key['h'] = "https://akim.tistory.com/";
-key['1'] = "https://akim.tistory.com/manage/newpost/91";
+key['1'] = "login.do?id=admin&password=admin";
 key['2'] = "https://akim.tistory.com/manage/newpost/92";
 key['3'] = "https://akim.tistory.com/manage/newpost/93";
 key['4'] = "https://akim.tistory.com/manage/newpost/94";

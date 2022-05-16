@@ -1,10 +1,12 @@
 package member.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 import member.dao.MemberDAO;
+import member.model.Member;
 
 public class MemberService {
 	private MemberDAO memberDao = new MemberDAO();
@@ -21,5 +23,18 @@ public class MemberService {
 			JdbcUtil.close(conn);
 		}
 		return result;
+	}
+	public ArrayList<Member> getAllMemberList(ArrayList<Member> member) {
+		Connection conn = null;
+		try {
+			conn = ConnectionProvider.getConnection();
+			conn.setAutoCommit(false);
+			member = memberDao.selectAll(conn, member);
+		}catch (Exception e) {
+			System.out.println("MemberService.getAllMemberList()");
+		}finally {
+			JdbcUtil.close(conn);
+		}
+		return member;
 	}
 }

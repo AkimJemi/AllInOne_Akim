@@ -7,7 +7,6 @@
 <%@ include file="/WEB-INF/tags/shortcut.tag"%>
 </head>
 <body>
-
 	<center>
 		<table border='1'>
 			<tr>메인 페이지
