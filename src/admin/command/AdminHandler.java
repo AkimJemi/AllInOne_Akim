@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import admin.service.AdminService;
-import member.model.Member;
 import mvc.command.CommandHandler;
+import reservation.model.Reservation;
 
 public class AdminHandler implements CommandHandler {
 	private final static String ADMIN_FORM = "WEB-INF/admin/admin.jsp";
-	private AdminService adminService = new  AdminService(); 
+	private AdminService adminService = new AdminService();
 
 	@Override
 	public String process(HttpServletRequest rq, HttpServletResponse rp)
@@ -21,16 +21,18 @@ public class AdminHandler implements CommandHandler {
 		if (rq.getMethod().equalsIgnoreCase("POST")) {
 			return processSubmit(rq, rp);
 		} else if (rq.getMethod().equalsIgnoreCase("GET")) {
-			return processForm(rq,rp);
+			return processForm(rq, rp);
 		} else {
 			System.out.println("error");
 			return null;
 		}
 	}
 
-	private String processForm(HttpServletRequest rq, HttpServletResponse rp) throws SQLException {
-		ArrayList<Member> user = adminService.getAllUserInfo();
-		rq.setAttribute("user", user);
+	private String processForm(HttpServletRequest rq, HttpServletResponse rp)
+			throws SQLException {
+		ArrayList<Reservation> reservation = new ArrayList<Reservation>();
+		reservation = adminService.getAllUserInfo(reservation);
+		rq.setAttribute("reservation", reservation);
 		return ADMIN_FORM;
 	}
 

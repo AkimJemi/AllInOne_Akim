@@ -4,6 +4,8 @@ show tables;
 
 create database reservation_akim;
 
+// member
+
 create table member(
 no INT(5) AUTO_INCREMENT PRIMARY KEY,
 id varchar(20) not null UNIQUE,
@@ -14,11 +16,36 @@ gender enum('M','F','none') not null,
 age int(3) not null
 ) engine=InnoDB default character set=utf8;
 
+ALTER TABLE reservation
+ADD FOREIGN KEY (no) REFERENCES member(no) On Delete Cascade ;
+
 insert into member (id, password, name, email, gender, age) values ( 'admin', 'admin', "wowp100@naver.com", "김재민", 'M', 27);
-insert into member (id, password, name, email, gender, age) values ( '3', '3', "김상식","wowp97@naver.com",  'none', 23);
+insert into member (id, password, name, email, gender, age) values 
+( '1', '1', "김상식","wowp97@naver.com",  'none', 23),
+( '2', '1', "김상식","wowp96@naver.com",  'none', 23),
+( '3', '1', "김상식","wowp95@naver.com",  'none', 23),
+( '4', '1', "김상식","wowp94@naver.com",  'none', 23),
+( '5', '1', "김상식","wowp93@naver.com",  'none', 23),
+( '6', '1', "김상식","wowp92@naver.com",  'none', 23),
+( '7', '1', "김상식","wowp91@naver.com",  'none', 23),
+( '8', '1', "김상식","wowp90@naver.com",  'none', 23),
+( '9', '1', "김상식","wowp89@naver.com",  'none', 23),
+( '10', '1', "김상식","wowp88@naver.com",  'none', 23),
+( '11', '1', "김상식","wowp87@naver.com",  'none', 23),
+( '12', '1', "김상식","wowp86@naver.com",  'none', 23),
+( '13', '1', "김상식","wowp85@naver.com",  'none', 23),
+( '14', '1', "김상식","wowp84@naver.com",  'none', 23),
+( '15', '1', "김상식","wowp82@naver.com",  'none', 23),
+( '16', '1', "김상식","wowp81@naver.com",  'none', 23),
+( '17', '1', "김상식","wowp80@naver.com",  'none', 23),
+( '18', '1', "김상식","wowp79@naver.com",  'none', 23),
+( '19', '1', "김상식","wowp78@naver.com",  'none', 23),
+( '20', '1', "김상식","wowp77@naver.com",  'none', 23),
+( '21', '1', "김상식","wowp76@naver.com",  'none', 23);
 
 // reservation;
 drop table reservation;
+
 create table reservation(
 no INT(5) PRIMARY KEY NOT NULL,
 revNum varchar(6) not null,

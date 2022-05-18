@@ -19,9 +19,9 @@ public class bookInsertHandler implements CommandHandler {
 		else
 			return "error : process";
 	}
+	
 	private String processForm(HttpServletRequest rq, HttpServletResponse rp) {
 		String no = rq.getParameter("no");
-		System.out.println("no : " + no);
 		bookService.bookMember(no);
 		rq.setAttribute("insert", Boolean.TRUE);
 		return "/member/list.do";

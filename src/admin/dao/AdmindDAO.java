@@ -6,27 +6,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import member.model.Member;
+import reservation.model.Reservation;
 
 public class AdmindDAO {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-	private ArrayList<Member> AllUser = new ArrayList<Member>();
-	private Member member = null;
-	public ArrayList<Member> getAllUserInfo(Connection conn) throws SQLException {
-		pstmt = conn.prepareStatement("select * from unit");
-		
+	private Reservation reservation = null;
+	public ArrayList<Reservation> getAllReservationInfo(Connection conn, ArrayList<Reservation> reservations) throws SQLException {
+		pstmt = conn.prepareStatement("select * from reservation");
 		try {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				member = new Member(rs.getInt(1), rs.getString(2),
+				reservation = new Reservation(rs.getInt(1), rs.getString(2),
 						rs.getString(3));
-				AllUser.add(member);
+				reservations.add(reservation);
 			}
 		} catch (Exception e) {
-			System.out.println("AdmindDAO.getAllUserInfo()");
+			System.out.println("error : AdmindDAO.getAllReservationInfo()");
 		}
-		return AllUser;
+		return reservations;
 	}
-
 }

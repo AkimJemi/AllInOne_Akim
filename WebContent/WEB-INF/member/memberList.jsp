@@ -37,8 +37,8 @@
 					<input type="button" onClick="location.href='<%=request.getContextPath()%>/book/insert.do?no=${member.no}'" value="예약" />
 				</td>
 			</tr>
-
 		</c:forEach>
 	</table>
+	<input type="button" onClick="location.href='<%=request.getContextPath()%>/main.do'" value="돌아가기" />
 </body>
 </html>

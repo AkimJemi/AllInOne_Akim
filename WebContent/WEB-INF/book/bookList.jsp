@@ -12,16 +12,14 @@
   <tr>
     <th>회원 이름</th>
     <th>예약 상태</th>
+    <th>예약 상태</th>
   </tr>
 <c:forEach var="book" items="${book }" ></c:forEach>
   <tr>
     <td></td>
     <td></td>
+    <td></td>
   </tr>
 </table>
-
-
-
-
 </body>
 </html>
