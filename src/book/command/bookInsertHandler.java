@@ -7,7 +7,7 @@ import book.service.BookService;
 import mvc.command.CommandHandler;
 
 public class bookInsertHandler implements CommandHandler {
-	private final static String BOOK_INSERT = "/WEB-INF/book/bookList.jsp";
+	private final static String BOOK_INSERT = "/WEB-INF/res/book/bookList.jsp";
 	private BookService bookService = new BookService();
 	@Override
 	public String process(HttpServletRequest rq, HttpServletResponse rp)
@@ -24,7 +24,7 @@ public class bookInsertHandler implements CommandHandler {
 		String no = rq.getParameter("no");
 		bookService.bookMember(no);
 		rq.setAttribute("insert", Boolean.TRUE);
-		return "/member/list.do";
+		return "/res/member/list.do";
 	}
 
 	private String processSubmit(HttpServletRequest rq,

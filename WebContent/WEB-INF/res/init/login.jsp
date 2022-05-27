@@ -4,11 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="/WEB-INF/tags/shortcut.tag"%>
+<%@ include file="/WEB-INF/res/tags/shortcut.tag"%>
 </head>
 <body>
 	<div><%=request.getParameter("error")%></div>
-	<center>
 		<form method="post" action="login.do">
 			<table width='300' border="1">
 				<tr>
@@ -31,8 +30,7 @@
 			</table>
 		</form>
 		<form method="post" action="login.do?id=admin&password=admin">
-			<input type="submit" value="자동 로그인" />
+			<input type="submit" value="자동 로그인(1)" />
 		</form>
-	</center>
 </body>
 </html>

@@ -34,11 +34,11 @@
 				<td>${member.email}</td>
 				<td>${member.age}</td>
 				<td>
-					<input type="button" onClick="location.href='<%=request.getContextPath()%>/book/insert.do?no=${member.no}'" value="예약" />
+					<input type="button" onClick="location.href='../book/insert.do?no=${member.no}'" value="예약" />
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<input type="button" onClick="location.href='<%=request.getContextPath()%>/main.do'" value="돌아가기" />
+	<input type="button" onClick="location.href='../main.do'" value="돌아가기" />
 </body>
 </html>

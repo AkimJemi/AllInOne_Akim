@@ -8,7 +8,7 @@
 <body>
 	[<%=request.getContextPath()%>]
 	<script type="text/javascript">
-		location.href = 'login.do';
+		location.href = 'res/login.do';
 	</script>
 </body>
 </html>

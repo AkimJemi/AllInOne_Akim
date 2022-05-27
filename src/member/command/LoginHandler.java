@@ -7,12 +7,13 @@ import member.model.Member;
 import member.service.MemberService;
 import mvc.command.CommandHandler;
 public class LoginHandler implements CommandHandler {
-	private final static String LOGIN_FORM = "WEB-INF/init/login.jsp";
+	private final static String LOGIN_FORM = "/WEB-INF/res/init/login.jsp";
 
 	private MemberService memberService = new MemberService();
 	@Override
 	public String process(HttpServletRequest rq, HttpServletResponse rp)
 			throws Exception {
+		System.out.println("test");
 		if (rq.getMethod().equalsIgnoreCase("POST")) {
 			return processSubmit(rq, rp);
 		} else if (rq.getMethod().equalsIgnoreCase("GET")) {

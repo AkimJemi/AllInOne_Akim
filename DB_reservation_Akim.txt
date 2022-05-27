@@ -1,10 +1,7 @@
 mysql -u root
 use reservation_akim;
-show tables;
 
 create database reservation_akim;
-
-// member
 
 create table member(
 no INT(5) AUTO_INCREMENT PRIMARY KEY,
@@ -15,6 +12,12 @@ name varchar(30) not null,
 gender enum('M','F','none') not null,
 age int(3) not null
 ) engine=InnoDB default character set=utf8;
+
+create table reservation(
+no INT(5) PRIMARY KEY NOT NULL,
+revNum varchar(6) not null,
+ifreservation enum('yes','no','none') default 'none'
+)engine=InnoDB default character set=utf8;
 
 ALTER TABLE reservation
 ADD FOREIGN KEY (no) REFERENCES member(no) On Delete Cascade ;

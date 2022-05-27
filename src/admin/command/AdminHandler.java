@@ -11,7 +11,7 @@ import mvc.command.CommandHandler;
 import reservation.model.Reservation;
 
 public class AdminHandler implements CommandHandler {
-	private final static String ADMIN_FORM = "WEB-INF/admin/admin.jsp";
+	private final static String ADMIN_FORM = "/WEB-INF/res/admin/admin.jsp";
 	private AdminService adminService = new AdminService();
 
 	@Override

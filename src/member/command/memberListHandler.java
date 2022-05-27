@@ -10,7 +10,7 @@ import member.service.MemberService;
 import mvc.command.CommandHandler;
 
 public class memberListHandler implements CommandHandler {
-	private final static String MEMBER_LIST_FORM = "/WEB-INF/member/memberList.jsp";
+	private final static String MEMBER_LIST_FORM = "/WEB-INF/res/member/memberList.jsp";
 
 	private MemberService memberService = new MemberService();
 	@Override
@@ -25,7 +25,6 @@ public class memberListHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest rq, HttpServletResponse rp) {
-		
 		return MEMBER_LIST_FORM;
 	}
 
