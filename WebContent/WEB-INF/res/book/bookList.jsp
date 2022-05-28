@@ -16,9 +16,9 @@
   </tr>
 <c:forEach var="book" items="${book }" ></c:forEach>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>2</td>
+    <td>2</td>
+    <td>2</td>
   </tr>
 </table>
 </body>

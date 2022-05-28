@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="insert">
+	<c:if test="${insertResult}">
 		<script type="text/javascript">
 			alert("예약 성공");
 		</script>

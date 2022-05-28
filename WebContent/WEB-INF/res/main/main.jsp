@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="/WEB-INF/css/common.jsp"%>
 <style type="text/css">
 table {
 	width: 100%;
@@ -16,8 +17,10 @@ table {
 <%@ include file="/WEB-INF/res/tags/shortcut.tag"%>
 </head>
 <body>
+	<div class="center">시작</div>
 	<table border='1'>
-		<tr>메인 페이지
+		<tr>
+			<td>메인 페이지</td>
 		</tr>
 		<tr>
 			<th><a href="admin.do">관리자 페이지(2)</a></th>
