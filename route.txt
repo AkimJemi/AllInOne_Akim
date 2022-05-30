@@ -1,7 +1,4 @@
 /login.do=member.command.LoginHandler
-
-
-
 /main.do=main.command.MainHandler
 main/main.jsp
 
