@@ -16,6 +16,11 @@ public class Book {
 		this.check_res = check_res;
 	}
 
+	public Book(String if_res) {
+		super();
+		this.if_res = if_res;
+	}
+
 	public int getNo() {
 		return no;
 	}

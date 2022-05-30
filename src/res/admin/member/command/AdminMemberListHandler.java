@@ -1,6 +1,8 @@
 package res.admin.member.command;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,8 +34,9 @@ public class AdminMemberListHandler implements CommandHandler {
 	}
 
 	private String processForm(HttpServletRequest rq, HttpServletResponse rp) {
+		Map<String, Object> book = new HashMap<>();
 		
-		ArrayList<Book> book = new ArrayList<Book>();
+//		ArrayList<Book> book = new ArrayList<Book>();
 		book = adminBookService.selectBookList(book);
 		rq.setAttribute("book", book);
 		System.out.println(book.size());

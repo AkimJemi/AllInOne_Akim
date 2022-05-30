@@ -2,6 +2,7 @@ package res.admin.book.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Map;
 
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
@@ -37,11 +38,11 @@ public class AdminBookService {
 		}
 		return false;
 	}
-	public ArrayList<Book> selectBookList(ArrayList<Book> reservation ){
+	public Map<String, Object> selectBookList(Map<String, Object> book ){
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
-			reservation = bookDao.selectBookList(conn, reservation);
+			book = bookDao.selectBookList(conn, book);
 			conn.commit();
 			JdbcUtil.close(conn);
 		} catch (Exception e) {
@@ -50,7 +51,7 @@ public class AdminBookService {
 		finally {
 			JdbcUtil.close(conn);
 		}
-		return reservation;
+		return book;
 	}
 		
 }

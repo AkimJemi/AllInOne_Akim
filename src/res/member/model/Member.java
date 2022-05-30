@@ -30,6 +30,7 @@ public class Member {
 	public Member() {
 	}
 
+
 	public int getNo() {
 		return no;
 	}
