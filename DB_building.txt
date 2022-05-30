@@ -3,6 +3,7 @@ drop table ele;
 drop table unit;
 drop table main;
 
+
 create table water(
 no int(4) primary key,			
 water_ind int(7) not null		
