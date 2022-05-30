@@ -1,6 +1,6 @@
 mysql -u root
 use book_akim;
-
+drop database if exists akim_res 
 create database akim_res;
 drop table book;
 drop table member;
