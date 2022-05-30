@@ -7,9 +7,6 @@
 </head>
 <body>
 
-
-
-
 	[<%=request.getContextPath()%>]
 	<script type="text/javascript">
 		location.href = 'res/login.do';
