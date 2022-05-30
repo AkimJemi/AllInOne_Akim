@@ -13,7 +13,6 @@ public class LoginHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest rq, HttpServletResponse rp)
 			throws Exception {
-		System.out.println("test");
 		if (rq.getMethod().equalsIgnoreCase("POST")) {
 			return processSubmit(rq, rp);
 		} else if (rq.getMethod().equalsIgnoreCase("GET")) {
@@ -40,7 +39,7 @@ public class LoginHandler implements CommandHandler {
 			rq.setAttribute("error", "login");
 			return LOGIN_FORM + "?error=exist";
 		}
-		Member member = new Member(id, null, password);
+		Member member = new Member(id, password);
 		rq.getSession().setAttribute("loginedUser", member);
 		return "main.do";
 	}

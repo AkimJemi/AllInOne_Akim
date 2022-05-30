@@ -2,60 +2,31 @@ package res.member.model;
 
 public class Member {
 	private int no;
+
 	private String id;
 	private String password;
-	private String name;
 	private String email;
+	private String name;
 	private String gender;
 	private int age;
 
-	public Member(String id, String name, String password) {
-		this.id = id;
-		this.name = name;
-		this.password = password;
-	}
-
-	public Member(int no, String id, String password, String name, String email,
-			String gender, int age) {
+	public Member(int no, String id, String password, String email, String name, String gender, int age) {
+		super();
 		this.no = no;
 		this.id = id;
 		this.password = password;
+		this.email = email;
 		this.name = name;
-		this.email = email;
 		this.gender = gender;
 		this.age = age;
+
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public Member(int no, String id, String name) {
+	public Member(String id, String password) {
+		super();
 		this.id = id;
-		this.no = no;
-		this.name = name;
+		this.password = password;
 	}
-
 	public Member() {
 	}
 
@@ -75,24 +46,50 @@ public class Member {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public boolean matchPassword(String pwd) {
-		return password.equals(pwd);
+
+	public String getEmail() {
+		return email;
 	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public boolean matchPassword(String password) {
+		if (this.password == password) {
+			return true;
+		}
+		return false;
+	}
 }

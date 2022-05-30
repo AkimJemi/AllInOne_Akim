@@ -5,14 +5,14 @@ import java.util.ArrayList;
 
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
-import res.member.dao.MemberDAO;
+import res.admin.member.dao.AdminMemberDAO;
 import res.member.model.Member;
 
 public class MemberService {
-	private MemberDAO memberDao = new MemberDAO();
+	private AdminMemberDAO memberDao = new AdminMemberDAO();
+	private Connection conn;
 	public boolean checkUser(String id, String password) {
 		boolean result = false;
-		Connection conn = null;
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
@@ -25,7 +25,6 @@ public class MemberService {
 		return result;
 	}
 	public ArrayList<Member> getAllMemberList(ArrayList<Member> member) {
-		Connection conn = null;
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
