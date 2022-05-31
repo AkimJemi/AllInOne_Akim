@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import jdbc.JdbcUtil;
 import res.admin.book.model.Book;
@@ -18,22 +16,19 @@ public final class AdminBookDAO {
 	private Book book = null;
 	private Member member = null;
 
-	public Map<String, Object> selectBookList(Connection conn, Map<String, Object> map) {
+	public ArrayList<Book> selectBookList(Connection conn, ArrayList<Book> book) {
 		try {
-			ArrayList<List> books = new ArrayList();
-			List<List> book = null;
-			int[] intList = new int[8];
 			pstmt = conn.prepareStatement(
 					"select m.no, m.id,m.password,m.email,m.name,m.gender,m.age, b.if_res from member m left join book b on m.no = b.no");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				books.add(book.add(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getInt(7), rs.getString(8)));
+//				books.add(book.add(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+//						rs.getString(6), rs.getInt(7), rs.getString(8)));
 			}
 		} catch (Exception e) {
 			System.out.println("error : AdmindDAO.getAllReservationInfo()");
 		}
-		return map;
+		return book;
 	}
 
 	public Boolean insert(Connection conn, int no) throws SQLException {

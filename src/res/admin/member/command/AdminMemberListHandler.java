@@ -34,7 +34,7 @@ public class AdminMemberListHandler implements CommandHandler {
 	}
 
 	private String processForm(HttpServletRequest rq, HttpServletResponse rp) {
-		Map<String, Object> book = new HashMap<>();
+		ArrayList<Book> book = new ArrayList<Book>();
 		
 //		ArrayList<Book> book = new ArrayList<Book>();
 		book = adminBookService.selectBookList(book);

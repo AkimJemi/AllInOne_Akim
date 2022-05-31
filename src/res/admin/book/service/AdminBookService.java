@@ -38,7 +38,7 @@ public class AdminBookService {
 		}
 		return false;
 	}
-	public Map<String, Object> selectBookList(Map<String, Object> book ){
+	public ArrayList<Book> selectBookList(ArrayList<Book> book ){
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);

@@ -16,14 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.command.CommandHandler;
 import mvc.command.NullHandler;
 
-public class ControllerUsingURI extends HttpServlet {
+public class POMControllerUsingURI extends HttpServlet {
 	private Map<String, CommandHandler> commandHandlerMap = new HashMap<>();
 
 	@Override
 	public void init() throws ServletException {
-		String configFile = getInitParameter("configFile");
+		String configFile = getInitParameter("configFile"); // /WEB-INF/commandHandlerURI.properties
 		Properties prop = new Properties();
+		System.out.println("configFile : " + configFile);
 		String configFilePath = getServletContext().getRealPath(configFile);
+		System.out.println("configFilePath : " + configFilePath);
 		try (FileInputStream fis = new FileInputStream(configFilePath)) {
 			prop.load(fis);
 		} catch (IOException e) {
@@ -33,9 +35,12 @@ public class ControllerUsingURI extends HttpServlet {
 		Iterator keyIter = prop.keySet().iterator();
 		while (keyIter.hasNext()) {
 			String command = (String) keyIter.next();
+			System.out.println("command : " + command);
 			String handlerClassName = prop.getProperty(command);
+			System.out.println("handlerClassName : " + handlerClassName);
 			try {
 				Class<?> handlerClass = Class.forName(handlerClassName);
+				System.out.println("handlerClass : " + handlerClass );
 				CommandHandler handlerinstance = (CommandHandler) handlerClass
 						.newInstance();
 				commandHandlerMap.put(command, handlerinstance);
