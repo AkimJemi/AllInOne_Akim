@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<script type="text/javascript">
-		location.href = 'res/login.do';  
-	</script>
+	<a href="pom/test.do">pom[2]</a>
+	<a href="res/login.do">res[3]</a>
 </body>
 </html>

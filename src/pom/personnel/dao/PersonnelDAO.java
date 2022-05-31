@@ -10,7 +10,7 @@ import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 import pom.main.model.Paging;
 import pom.personnel.model.Personnel;
-import user.model.User;
+import pom.user.model.User;
 
 public class PersonnelDAO {
 	private PreparedStatement pstmt;

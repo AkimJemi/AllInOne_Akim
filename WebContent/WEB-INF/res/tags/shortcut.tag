@@ -6,7 +6,7 @@ key['e'] = "/admin/skin/edit/";
 key['r'] = "/admin/plugin/refererUrlLog/";
 key['h'] = "https://akim.tistory.com/";
 // 로그인
-key['1'] = "<%=request.getContextPath()%>/res/admin/main.do";
+key['1'] = "login.do?id=admin&password=admin";
 // 관리자 페이지
 key['2'] = "<%=request.getContextPath()%>/res/admin/book/list.do";
 // 회원 명단

@@ -8,7 +8,7 @@ import jdbc.connection.ConnectionProvider;
 import pom.main.model.Paging;
 import pom.personnel.dao.PersonnelDAO;
 import pom.personnel.model.Personnel;
-import user.model.User;
+import pom.user.model.User;
 
 public class PersonnelService {
 	private Connection conn;
