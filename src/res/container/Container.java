@@ -1,6 +1,7 @@
 package res.container;
 
 import res.controller.AdminBookListHandler;
+import res.controller.AdminMemberListHandler;
 import res.dao.AdminBookDAO;
 import res.dao.AdminDAO;
 import res.dao.AdminMemberDAO;
@@ -10,6 +11,7 @@ import res.service.MemberService;
 
 public class Container {
 	public static AdminBookListHandler adminBookListHandler;
+	public static AdminMemberListHandler adminMemberListHandler;
 	
 	
 	public static AdminBookDAO adminBookDao;
@@ -21,9 +23,13 @@ public class Container {
 	
 	static {
 		adminBookListHandler = new AdminBookListHandler();
+		adminMemberListHandler = new AdminMemberListHandler();
+		
+		
 		adminBookDao = new AdminBookDAO();
 		adminDao = new AdminDAO();
 		adminMemberDao = new AdminMemberDAO();
+		
 		adminBookService = new AdminBookService();
 		loginService = new LoginService();
 		memberService = new MemberService();

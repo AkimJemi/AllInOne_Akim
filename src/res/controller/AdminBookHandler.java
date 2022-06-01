@@ -8,7 +8,7 @@ import mvc.command.CommandHandler;
 public class AdminBookHandler implements CommandHandler {
 
 	@Override
-	public String process(HttpServletRequest rq, HttpServletResponse rp) throws Exception {
+	public String process(HttpServletRequest rq, HttpServletResponse rp)  {
 		String rqUrl = rq.getRequestURI();
 
 		String[] rqUrlBites = rqUrl.split("/");

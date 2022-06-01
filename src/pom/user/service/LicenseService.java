@@ -13,7 +13,7 @@ public class LicenseService {
 	private LicenseDAO licenseDao = new LicenseDAO();
 	private Connection conn = null;
 	
-	public ArrayList<License> GetAllLicenseList(int no) throws SQLException{
+	public ArrayList<License> GetAllLicenseList(int no) {
 		ArrayList<License> licenseList = new ArrayList<License>();
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -27,7 +27,7 @@ public class LicenseService {
 		return licenseList;
 	}
 	
-	public ArrayList<License> InsertAllLicense(ArrayList<License> license, int no) throws SQLException{
+	public ArrayList<License> InsertAllLicense(ArrayList<License> license, int no) {
 		try {
 			conn = ConnectionProvider.getConnection();
 			license = licenseDao.InsertAll(conn, license,no);

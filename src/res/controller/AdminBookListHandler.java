@@ -28,8 +28,6 @@ public class AdminBookListHandler implements CommandHandler {
 
 	private String processForm(HttpServletRequest rq, HttpServletResponse rp) {
 		ArrayList<MemberAndBook> book = new ArrayList<MemberAndBook>();
-		System.out.println("test1");
-		
 		book = adminBookService.selectBookList(book);
 		rq.setAttribute("book", book);
 		return ADMIN_FORM;

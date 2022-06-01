@@ -30,7 +30,7 @@ public class UserHandler implements CommandHandler {
 	private int no;
 
 	@Override
-	public String process(HttpServletRequest rq, HttpServletResponse rp) throws Exception {
+	public String process(HttpServletRequest rq, HttpServletResponse rp)  {
 		ArrayList<Personnel> personnelList = new ArrayList<Personnel>();
 		if (rq.getParameter("init") != null)
 			return MAIN_FORM;
@@ -102,12 +102,12 @@ public class UserHandler implements CommandHandler {
 			return null;
 	}
 
-	private String processForm(HttpServletRequest rq, HttpServletResponse rs) throws SQLException {
+	private String processForm(HttpServletRequest rq, HttpServletResponse rs){
 		
 		return MAIN_FORM;
 	}
 
-	private String processSubmit(HttpServletRequest rq, HttpServletResponse rs) throws SQLException {
+	private String processSubmit(HttpServletRequest rq, HttpServletResponse rs)  {
 		licenseService = new LicenseService();
 		licenseList = new ArrayList<License>();
 

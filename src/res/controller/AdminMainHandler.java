@@ -10,7 +10,7 @@ public class AdminMainHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response)  {
 		
 		return MAIN_FORM;
 	}

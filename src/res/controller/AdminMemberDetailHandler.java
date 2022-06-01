@@ -8,8 +8,7 @@ import mvc.command.CommandHandler;
 public class AdminMemberDetailHandler implements CommandHandler {
 
 	@Override
-	public String process(HttpServletRequest rq, HttpServletResponse rp) throws Exception {
-		// TODO Auto-generated method stub
+	public String process(HttpServletRequest rq, HttpServletResponse rp) {
 		return null;
 	}
 

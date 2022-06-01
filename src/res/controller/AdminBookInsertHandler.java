@@ -17,7 +17,7 @@ public class AdminBookInsertHandler implements CommandHandler {
 	private MemberService memberService = new MemberService();
 	@Override
 	public String process(HttpServletRequest rq, HttpServletResponse rp)
-			throws Exception {
+		 {
 		if(rq.getParameter("no")==null) {
 			Util.redirectMsgAndBack(rq, "존재하지 않는 회원번회입니다");
 			return "common/redirect.jsp";//AKIM

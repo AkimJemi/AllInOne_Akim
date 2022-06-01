@@ -12,7 +12,7 @@ public class LoginHandler implements CommandHandler {
 	private MemberService memberService = new MemberService();
 	@Override
 	public String process(HttpServletRequest rq, HttpServletResponse rp)
-			throws Exception {
+			 {
 		if (rq.getMethod().equalsIgnoreCase("POST")) {
 			return processSubmit(rq, rp);
 		} else if (rq.getMethod().equalsIgnoreCase("GET")) {

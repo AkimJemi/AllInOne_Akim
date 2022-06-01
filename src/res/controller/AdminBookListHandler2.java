@@ -10,7 +10,7 @@ public class AdminBookListHandler2 implements CommandHandler {
 	
 	@Override
 	public String process(HttpServletRequest rq, HttpServletResponse rp)
-			throws Exception {
+			{
 		System.out.println("dd");
 		if (rq.getMethod().equalsIgnoreCase("GET"))
 			return processForm(rq, rp);

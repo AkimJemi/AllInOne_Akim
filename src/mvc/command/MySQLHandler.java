@@ -23,7 +23,7 @@ import jdbc.connection.ConnectionProvider;
 public class MySQLHandler implements CommandHandler {
 
 	@Override
-	public String process(HttpServletRequest rq, HttpServletResponse rp) throws Exception {
+	public String process(HttpServletRequest rq, HttpServletResponse rp) {
 		String URI = rq.getRequestURI();
 		String[] URIBites = URI.split("/");
 		String ProjectURI = URIBites[1];

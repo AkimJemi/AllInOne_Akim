@@ -16,7 +16,7 @@ public class AdminBookCheckResUpdateHandler implements CommandHandler {
 	private AdminBookService adminService = new AdminBookService();
 
 	@Override
-	public String process(HttpServletRequest rq, HttpServletResponse rp) throws Exception {
+	public String process(HttpServletRequest rq, HttpServletResponse rp)  {
 		ArrayList<MemberAndBook> book = new ArrayList<MemberAndBook>();
 		int no =0;
 		Boolean result = false;

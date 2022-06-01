@@ -8,12 +8,13 @@ key['h'] = "https://akim.tistory.com/";
 // 로그인
 key['1'] = "login.do?id=admin&password=admin";
 // pom
-key['2'] = "<%=request.getContextPath()%>/res/admin/book/list.do";
+key['2'] = "<%=request.getContextPath()%>/pom/main";
 // res
-key['3'] = "main";
-key['4'] = "admin/main";
-key['5'] = "<%=request.getContextPath()%>/res/admin/main.do";
-key['0'] = "login.do?id=admin&password=admin";
+key['3'] = "<%=request.getContextPath()%>/res/main";
+key['4'] = "<%=request.getContextPath()%>/res/admin/main";
+key['5'] = "<%=request.getContextPath()%>/res/admin/book/list";
+key['6'] = "<%=request.getContextPath()%>/res/admin/member/list";
+
 function getKey(keyStroke) {
 	if ((event.srcElement.tagName != 'INPUT') && (event.srcElement.tagName != 'TEXTAREA')){
 		isNetscape=(document.layers);

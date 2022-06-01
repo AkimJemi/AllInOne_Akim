@@ -12,17 +12,16 @@ import res.service.AdminBookService;
 import res.service.MemberService;
 
 public class AdminMemberListHandler implements CommandHandler {
-	private final static String ADMIN_MEMBER_LIST_FORM = "/WEB-INF/res/admin/adminMember/adminMemberList.jsp";
+	private final static String ADMIN_MEMBER_LIST_FORM = "res/admin/member/list";
 	private MemberService memberService = new MemberService();
 	private AdminBookService adminBookService = new AdminBookService();
-	
+
 	@Override
-	public String process(HttpServletRequest rq, HttpServletResponse rp)
-			throws Exception {
+	public String process(HttpServletRequest rq, HttpServletResponse rp) {
 		if (rq.getMethod().equalsIgnoreCase("GET"))
-			return processForm(rq,rp);
+			return processForm(rq, rp);
 		else if (rq.getMethod().equalsIgnoreCase("POST"))
-			return processSubmit(rq,rp);
+			return processSubmit(rq, rp);
 		else
 			return "오류나잉";
 	}
@@ -33,7 +32,7 @@ public class AdminMemberListHandler implements CommandHandler {
 
 	private String processForm(HttpServletRequest rq, HttpServletResponse rp) {
 		ArrayList<MemberAndBook> book = new ArrayList<MemberAndBook>();
-		
+
 //		ArrayList<Book> book = new ArrayList<Book>();
 		book = adminBookService.selectBookList(book);
 		rq.setAttribute("book", book);

@@ -53,41 +53,25 @@ public class RESDispatcherServlet extends DispatcherServlet {
 				return "init/main";
 			}
 		}
-		System.out.println("test");
 		if (rqUrlBites[2].equals("res")) {
 			if (rqUrlBites[3].equals("main"))
 				return "res/main";
 			else if (rqUrlBites[3].equals("admin")) {
 				if (rqUrlBites[4].equals("main"))
 					return "res/admin/main";
-				else if (rqUrlBites[4].equals("book"))
+				else if (rqUrlBites[4].equals("book")) {
 					if (rqUrlBites[5].equals("list")) {
 						AdminBookListHandler adminBookListHandler = new AdminBookListHandler();
-						jspPath = Container.adminBookListHandler.process(rq,rp);
+						jspPath = Container.adminBookListHandler.process(rq, rp);
 						return jspPath;
 					}
-				if (rqUrlBites[4].equals("update"))
-					System.out.println("update");
-				else if (rqUrlBites[5].equals("delete.do"))
-					System.out.println("delete");
-				else if (rqUrlBites[5].equals("select.do"))
-					System.out.println("select");
-				else if (rqUrlBites[5].equals("detail.do"))
-					System.out.println("detail");
-				else if (rqUrlBites[5].equals("insert.do"))
-					System.out.println("insert");
-
-			} else if (rqUrlBites[3].equals("member")) {
-				if (rqUrlBites[4].equals("book")) {
-
-				}
-				if (rqUrlBites[4].equals("member")) {
-
+				} else if (rqUrlBites[4].equals("member")) {
+					if (rqUrlBites[5].equals("list")) {
+						jspPath = Container.adminMemberListHandler.process(rq, rp);
+						return jspPath;
+					}
 				}
 			}
-			if (rqUrlBites[4].equals("member")) {
-			}
-			return jspPath;
 		}
 		return jspPath;
 	}
