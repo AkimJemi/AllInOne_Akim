@@ -4,9 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="/WEB-INF/res/tags/shortcut.tag"%>
 </head>
 <body>
+<%@ include file="/WEB-INF/res/tags/header.jsp" %>
 	<div><%=request.getParameter("error")%></div>
 		<form method="post" action="login.do">
 			<table width='300' border="1">

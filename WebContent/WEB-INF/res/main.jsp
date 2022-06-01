@@ -4,11 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>res/main</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/res/tags/header.jsp" %>
-	<a href="pom/test.do">pom[2]</a>
-	<a href="../res/main">res[3]</a>
+	<h1>
+		<a href="admin/main">admin/main[4]</a>
+	</h1>
+	<h1>
+		<a href="member/main">member/main[5]</a>
+	</h1>
 </body>
 </html>

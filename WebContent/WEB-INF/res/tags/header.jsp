@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/res/tags/shortcut.tag"%>
+<%@ include file="/WEB-INF/res/tags/resShortcut.tag"%>
 
 <style>
 body {

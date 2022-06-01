@@ -7,28 +7,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import jdbc.JdbcUtil;
-import res.dto.Book;
-import res.dto.Member;
+import res.dto.MemberAndBook;
 
 public final class AdminBookDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	private Book book = null;
-	private Member member = null;
+	private MemberAndBook memberAndBook;
 
-	public ArrayList<Book> selectBookList(Connection conn, ArrayList<Book> book) {
+	public ArrayList<MemberAndBook> selectBookList(Connection conn, ArrayList<MemberAndBook> books) {
 		try {
 			pstmt = conn.prepareStatement(
-					"select m.no, m.id,m.password,m.email,m.name,m.gender,m.age, b.if_res from member m left join book b on m.no = b.no");
+					"select m.no, m.id,m.password,m.email,m.name,m.gender,m.age,b.res_nvm, b.if_res,b.check_res from member m left join book b on m.no = b.no");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-//				books.add(book.add(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-//						rs.getString(6), rs.getInt(7), rs.getString(8)));
+				books.add( new MemberAndBook (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getInt(7),rs.getString(8), rs.getString(9),rs.getString(10)));
 			}
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("error : AdmindDAO.getAllReservationInfo()");
 		}
-		return book;
+		return books;
 	}
 
 	public Boolean insert(Connection conn, int no) throws SQLException {

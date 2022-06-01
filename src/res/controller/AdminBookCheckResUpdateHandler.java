@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import jdbc.Util;
 import mvc.command.CommandHandler;
-import res.dto.Book;
+import res.dto.MemberAndBook;
 import res.service.AdminBookService;
 
 public class AdminBookCheckResUpdateHandler implements CommandHandler {
@@ -17,7 +17,7 @@ public class AdminBookCheckResUpdateHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest rq, HttpServletResponse rp) throws Exception {
-		ArrayList<Book> book = new ArrayList<Book>();
+		ArrayList<MemberAndBook> book = new ArrayList<MemberAndBook>();
 		int no =0;
 		Boolean result = false;
 		

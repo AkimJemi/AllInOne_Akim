@@ -23,8 +23,8 @@ table {
 			<td>메인 페이지</td>
 		</tr>
 		<tr>
-			<th><a href="book/list.do">관리자 페이지(2)</a></th>
-			<th><a href="member/list.do">회원 명단(3)</a></th>
+			<th><a href="book/list">관리자 페이지(5)</a></th>
+			<th><a href="member/list">회원 명단(6)</a></th>
 		</tr>
 		<tr>
 		</tr>

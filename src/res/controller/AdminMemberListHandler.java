@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
-import res.dto.Book;
 import res.dto.Member;
+import res.dto.MemberAndBook;
 import res.service.AdminBookService;
 import res.service.MemberService;
 
@@ -32,7 +32,7 @@ public class AdminMemberListHandler implements CommandHandler {
 	}
 
 	private String processForm(HttpServletRequest rq, HttpServletResponse rp) {
-		ArrayList<Book> book = new ArrayList<Book>();
+		ArrayList<MemberAndBook> book = new ArrayList<MemberAndBook>();
 		
 //		ArrayList<Book> book = new ArrayList<Book>();
 		book = adminBookService.selectBookList(book);

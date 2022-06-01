@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 import res.dao.AdminBookDAO;
-import res.dto.Book;
+import res.dto.MemberAndBook;
 
 public class AdminBookService {
 	private AdminBookDAO bookDao = new AdminBookDAO();
@@ -37,10 +37,11 @@ public class AdminBookService {
 		}
 		return false;
 	}
-	public ArrayList<Book> selectBookList(ArrayList<Book> book ){
+	public ArrayList<MemberAndBook> selectBookList(ArrayList<MemberAndBook> book ){
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
+			
 			book = bookDao.selectBookList(conn, book);
 			conn.commit();
 			JdbcUtil.close(conn);

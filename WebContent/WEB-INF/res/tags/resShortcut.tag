@@ -7,11 +7,11 @@ key['r'] = "/admin/plugin/refererUrlLog/";
 key['h'] = "https://akim.tistory.com/";
 // 로그인
 key['1'] = "login.do?id=admin&password=admin";
-// 관리자 페이지
+// pom
 key['2'] = "<%=request.getContextPath()%>/res/admin/book/list.do";
-// 회원 명단
-key['3'] = "<%=request.getContextPath()%>/res/admin/member/list.do";
-key['4'] = "<%=request.getContextPath()%>/res/product.do";
+// res
+key['3'] = "main";
+key['4'] = "admin/main";
 key['5'] = "<%=request.getContextPath()%>/res/admin/main.do";
 key['0'] = "login.do?id=admin&password=admin";
 function getKey(keyStroke) {
