@@ -1,12 +1,8 @@
 <script type="text/javascript">
 //메인 단축키
 var key = new Array();
-key['w'] = "/admin/entry/post/";
-key['e'] = "/admin/skin/edit/";
-key['r'] = "/admin/plugin/refererUrlLog/";
-key['h'] = "https://akim.tistory.com/";
 // 로그인
-key['1'] = "login.do?id=admin&password=admin";
+key['1'] = "<%=request.getContextPath()%>/res/login.do?id=admin&password=admin";
 // pom
 key['2'] = "<%=request.getContextPath()%>/pom/main";
 // res

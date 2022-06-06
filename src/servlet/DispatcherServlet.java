@@ -30,7 +30,8 @@ public abstract class DispatcherServlet extends HttpServlet {
 			return;
 		}
 
-		String jspPath = doAction(req, resp, (String) doBeforeActionRs.get("controllerName"), (String) doBeforeActionRs.get("actionMethodName"));
+		String jspPath = doAction(req, resp, (String) doBeforeActionRs.get("controllerName"),
+				(String) doBeforeActionRs.get("actionMethodName"));
 
 		if (jspPath == null) {
 			resp.getWriter().append("jsp 정보가 없습니다.");
@@ -40,7 +41,8 @@ public abstract class DispatcherServlet extends HttpServlet {
 		doAfterAction(req, resp, jspPath);
 	}
 
-	private Map<String, Object> doBeforeAction(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	private Map<String, Object> doBeforeAction(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
 
@@ -128,7 +130,7 @@ public abstract class DispatcherServlet extends HttpServlet {
 		needToLoginActionUrls.add("/usr/article/modify");
 		needToLoginActionUrls.add("/usr/article/doModify");
 		needToLoginActionUrls.add("/usr/article/doDelete");
-		
+
 		needToLoginActionUrls.add("/usr/reply/doWrite");
 		needToLoginActionUrls.add("/usr/reply/modify");
 		needToLoginActionUrls.add("/usr/reply/doModify");
@@ -177,15 +179,23 @@ public abstract class DispatcherServlet extends HttpServlet {
 		return rs;
 	}
 
-	protected abstract String doAction(HttpServletRequest req, HttpServletResponse resp, String controllerName, String actionMethodName);
+	protected abstract String doAction(HttpServletRequest req, HttpServletResponse resp, String controllerName,
+			String actionMethodName);
 
-	private void doAfterAction(HttpServletRequest req, HttpServletResponse resp, String jspPath) throws ServletException, IOException {
-//		MysqlUtil.closeConnection();
-		RequestDispatcher rd = req.getRequestDispatcher(getJspDirPath() + "/" + jspPath + ".jsp");
+	private void doAfterAction(HttpServletRequest req, HttpServletResponse resp, String jspPath)
+			throws ServletException, IOException {
+		RequestDispatcher rd=null;
+		if (jspPath.contains("init")) 
+			 rd = req.getRequestDispatcher(getJspDirPathInit() +jspPath + ".jsp");
+		else 
+			 rd = req.getRequestDispatcher(getJspDirPath() + jspPath + ".jsp");
 		rd.forward(req, resp);
 	}
-	
+
 	private String getJspDirPath() {
+		return "/WEB-INF/res/";
+	}
+	private String getJspDirPathInit() {
 		return "/WEB-INF/";
 	}
 }

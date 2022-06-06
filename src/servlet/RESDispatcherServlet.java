@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import res.container.Container;
-import res.controller.AdminBookListHandler;
 import res.dto.Member;
 
 public class RESDispatcherServlet extends DispatcherServlet {
@@ -30,10 +29,6 @@ public class RESDispatcherServlet extends DispatcherServlet {
 ///mysql.do=mvc.command.MySQLHandler
 		System.out.println(rqUrl);
 		System.out.println("rqUrlBites.length : " + rqUrlBites.length);
-//		System.out.println("rqUrlBites[0] : " + rqUrlBites[0]);
-//		System.out.println("rqUrlBites[1] : " + rqUrlBites[1]);
-//		System.out.println("rqUrlBites[2] : " + rqUrlBites[2]);
-//		System.out.println("rqUrlBites[3] : " + rqUrlBites[3]);
 		for (int i = 0; i < rqUrlBites.length; i++) {
 			System.out.println(String.format("rqUrlBites[%s] : " + rqUrlBites[i], i));
 		}
@@ -55,22 +50,29 @@ public class RESDispatcherServlet extends DispatcherServlet {
 		}
 		if (rqUrlBites[2].equals("res")) {
 			if (rqUrlBites[3].equals("main"))
-				return "res/main";
+				return "main";
 			else if (rqUrlBites[3].equals("admin")) {
 				if (rqUrlBites[4].equals("main"))
-					return "res/admin/main";
+					return "admin/main";
+
 				else if (rqUrlBites[4].equals("book")) {
 					if (rqUrlBites[5].equals("list")) {
-						AdminBookListHandler adminBookListHandler = new AdminBookListHandler();
-						jspPath = Container.adminBookListHandler.process(rq, rp);
-						return jspPath;
+						return Container.adminBookListHandler.process(rq, rp);
+					} else if (rqUrlBites[5].equals("check_res")) {
+						if (rqUrlBites[6].equals("update.do"))
+							return Container.adminBookCheckResUpdateHandler.process(rq, rp);
 					}
-				} else if (rqUrlBites[4].equals("member")) {
-					if (rqUrlBites[5].equals("list")) {
-						jspPath = Container.adminMemberListHandler.process(rq, rp);
-						return jspPath;
-					}
-				}
+				} else if (rqUrlBites[4].equals("member"))
+					if (rqUrlBites[5].equals("list"))
+						return Container.adminMemberListHandler.process(rq, rp);
+					else if(rqUrlBites[5].equals("insert"))
+						return "admin/member/insert";
+//						if (rqUrlBites[6].equals("check_res")) {
+//							if (rqUrlBites[7].equals("update"))
+//								return Container.adminBookCheckResUpdateHandler.process(rq,rp);
+//						} else {
+//						}
+
 			}
 		}
 		return jspPath;

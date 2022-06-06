@@ -16,6 +16,7 @@
 		</script>
 	</c:if>
 	<%@ include file="/WEB-INF/res/tags/header.jsp"%>
+	<a href="insert">맴버추가</a>
 	<table>
 		<tr>
 			<th>번호</th>
@@ -37,19 +38,28 @@
 				<td>${member.gender}</td>
 				<td>${member.email}</td>
 				<td>${member.age}</td>
-				<td><input type="button"
-					style="background-color: blue; color: white;"
-					onClick="location.href='../book/insert.do?no=${member.no}'"
-					value="예약" /></td>
+				<td><c:choose>
+						<c:when test="${member.check_res eq 'yes'}">
+							<input type="button"
+								style="background-color: blue; color: white;"
+								onClick="location.href='../book/insert.do?no=${member.no}'"
+								value="예약" />
+						</c:when>
+						<c:otherwise>
+							<input type="button"
+								style="background-color: red; color: white;"
+								onClick="location.href='../book/insert.do?no=${member.no}'"
+								value="예약" />
+						</c:otherwise>
+					</c:choose></td>
 			</tr>
 		</c:forEach>
-
 		<%
 		int max = ((ArrayList<Book>) request.getAttribute("book")).size();
-		
+
 		for (int i = 1; i < max; i++) {
 		%>
-		<a><%=max %></a>
+		<a><%=max%></a>
 
 		<%
 		}

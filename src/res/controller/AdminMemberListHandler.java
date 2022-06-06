@@ -12,7 +12,7 @@ import res.service.AdminBookService;
 import res.service.MemberService;
 
 public class AdminMemberListHandler implements CommandHandler {
-	private final static String ADMIN_MEMBER_LIST_FORM = "res/admin/member/list";
+	private final static String ADMIN_MEMBER_LIST_FORM = "admin/member/list";
 	private MemberService memberService = new MemberService();
 	private AdminBookService adminBookService = new AdminBookService();
 
@@ -31,15 +31,15 @@ public class AdminMemberListHandler implements CommandHandler {
 	}
 
 	private String processForm(HttpServletRequest rq, HttpServletResponse rp) {
-		ArrayList<MemberAndBook> book = new ArrayList<MemberAndBook>();
+		ArrayList<MemberAndBook> memberAndBook = new ArrayList<MemberAndBook>();
 
 //		ArrayList<Book> book = new ArrayList<Book>();
-		book = adminBookService.selectBookList(book);
-		rq.setAttribute("book", book);
-		System.out.println(book.size());
-		ArrayList<Member> member = new ArrayList<Member>();
-		member = memberService.getAllMemberList(member);
-		rq.setAttribute("member", member);
+		memberAndBook = adminBookService.selectBookList(memberAndBook);
+		rq.setAttribute("member", memberAndBook);
+//		System.out.println(book.size());
+//		ArrayList<Member> member = new ArrayList<Member>();
+//		member = memberService.getAllMemberList(member);
+//		rq.setAttribute("member", member);
 		return ADMIN_MEMBER_LIST_FORM;
 	}
 }

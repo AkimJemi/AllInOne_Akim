@@ -10,7 +10,7 @@ import res.dto.MemberAndBook;
 import res.service.AdminBookService;
 
 public class AdminBookListHandler implements CommandHandler {
-	private final static String ADMIN_FORM = "res/admin/book/list";
+	private final static String ADMIN_FORM = "admin/book/list";
 	private AdminBookService adminBookService = new AdminBookService();
 
 	@Override
