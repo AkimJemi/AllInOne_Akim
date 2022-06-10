@@ -9,12 +9,12 @@ import jdbc.Util;
 import mvc.command.CommandHandler;
 import res.dto.Member;
 import res.service.AdminBookService;
-import res.service.MemberService;
+import res.service.AdminMemberService;
 
 public class AdminBookInsertHandler implements CommandHandler {
 	private final static String MEMBER_LIST_FORM = "/WEB-INF/res/admin/adminMember/adminMemberList.jsp";
 	private AdminBookService bookService = new AdminBookService();
-	private MemberService memberService = new MemberService();
+	private AdminMemberService memberService = new AdminMemberService();
 	@Override
 	public String process(HttpServletRequest rq, HttpServletResponse rp)
 		 {

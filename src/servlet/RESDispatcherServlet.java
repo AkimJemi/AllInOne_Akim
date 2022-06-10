@@ -29,7 +29,7 @@ public class RESDispatcherServlet extends DispatcherServlet {
 ///mysql.do=mvc.command.MySQLHandler
 		System.out.println(rqUrl);
 		System.out.println("rqUrlBites.length : " + rqUrlBites.length);
-		for (int i = 0; i < rqUrlBites.length; i++) {
+		for (int i = 1; i < rqUrlBites.length; i++) {
 			System.out.println(String.format("rqUrlBites[%s] : " + rqUrlBites[i], i));
 		}
 
@@ -62,17 +62,21 @@ public class RESDispatcherServlet extends DispatcherServlet {
 						if (rqUrlBites[6].equals("update.do"))
 							return Container.adminBookCheckResUpdateHandler.process(rq, rp);
 					}
-				} else if (rqUrlBites[4].equals("member"))
-					if (rqUrlBites[5].equals("list"))
+				} else if (rqUrlBites[4].equals("member")) {
+					if (rqUrlBites[5].equals("list")) {
+						 if(rqUrlBites.length==6){
+							return Container.adminMemberListHandler.process(rq, rp);
+						}else if (rqUrlBites[6].equals("check_res")) {
+							if (rqUrlBites[7].equals("update.do")) {
+								return Container.adminBookCheckResUpdateHandler.process(rq, rp);
+							}
+						}
+					} else if (rqUrlBites[5].equals("insert")) {
+						return Container.adminMemberInsertHandler.process(rq, rp);
+					} else {
 						return Container.adminMemberListHandler.process(rq, rp);
-					else if(rqUrlBites[5].equals("insert"))
-						return "admin/member/insert";
-//						if (rqUrlBites[6].equals("check_res")) {
-//							if (rqUrlBites[7].equals("update"))
-//								return Container.adminBookCheckResUpdateHandler.process(rq,rp);
-//						} else {
-//						}
-
+					}
+				}
 			}
 		}
 		return jspPath;

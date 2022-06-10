@@ -3,22 +3,29 @@ package res.dto;
 public class Book {
 
 	private int no;
+	private int member_no;
 	private String res_nvm;
 	private String if_res;
 	private String check_res;
 
-	
-	public Book(int no, String res_nvm, String if_res, String check_res) {
-		super();
+	public Book(int no, int member_no, String res_nvm, String if_res, String check_res) {
 		this.no = no;
+		this.member_no = member_no;
 		this.res_nvm = res_nvm;
 		this.if_res = if_res;
 		this.check_res = check_res;
 	}
 
 	public Book(String if_res) {
-		super();
 		this.if_res = if_res;
+	}
+
+	public int getMember_no() {
+		return member_no;
+	}
+
+	public void setMember_no(int member_no) {
+		this.member_no = member_no;
 	}
 
 	public int getNo() {
@@ -52,7 +59,5 @@ public class Book {
 	public void setCheck_res(String check_res) {
 		this.check_res = check_res;
 	}
-	
-	
 
 }

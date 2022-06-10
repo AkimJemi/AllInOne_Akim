@@ -1,19 +1,21 @@
 package res.container;
 
-import res.controller.AdminBookCheckResUpdateHandler;
+import res.controller.AdminBookUpdateHandler;
 import res.controller.AdminBookListHandler;
+import res.controller.AdminMemberInsertHandler;
 import res.controller.AdminMemberListHandler;
 import res.dao.AdminBookDAO;
 import res.dao.AdminDAO;
 import res.dao.AdminMemberDAO;
 import res.service.AdminBookService;
 import res.service.LoginService;
-import res.service.MemberService;
+import res.service.AdminMemberService;
 
 public class Container {
 	public static AdminBookListHandler adminBookListHandler;
 	public static AdminMemberListHandler adminMemberListHandler;
-	public static AdminBookCheckResUpdateHandler adminBookCheckResUpdateHandler;
+	public static AdminBookUpdateHandler adminBookCheckResUpdateHandler;
+	public static AdminMemberInsertHandler adminMemberInsertHandler;
 	
 	
 	public static AdminBookDAO adminBookDao;
@@ -21,13 +23,13 @@ public class Container {
 	public static AdminMemberDAO adminMemberDao;
 	public static AdminBookService adminBookService;
 	public static LoginService loginService;
-	public static MemberService memberService;
+	public static AdminMemberService memberService;
 	
 	static {
 		adminBookListHandler = new AdminBookListHandler();
 		adminMemberListHandler = new AdminMemberListHandler();
-		adminBookCheckResUpdateHandler = new AdminBookCheckResUpdateHandler();
-		
+		adminBookCheckResUpdateHandler = new AdminBookUpdateHandler();
+		adminMemberInsertHandler = new AdminMemberInsertHandler();
 		
 		adminBookDao = new AdminBookDAO();
 		adminDao = new AdminDAO();
@@ -35,7 +37,7 @@ public class Container {
 		
 		adminBookService = new AdminBookService();
 		loginService = new LoginService();
-		memberService = new MemberService();
+		memberService = new AdminMemberService();
 		
 		
 	}

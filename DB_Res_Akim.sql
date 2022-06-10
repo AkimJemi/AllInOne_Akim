@@ -5,9 +5,9 @@ create database akim_res;
 drop table book;
 drop table member;
 
-
-drop table member;
 drop table book;
+drop table member;
+
 create table member(
 no INT(5) AUTO_INCREMENT PRIMARY KEY,
 id varchar(20) not null UNIQUE,
@@ -19,14 +19,27 @@ age int(3) not null
 ) engine=InnoDB default character set=utf8;
 
 create table book(
-no INT(5) PRIMARY KEY NOT NULL,
-res_Nvm varchar(6) not null,
+no INT(5) AUTO_INCREMENT PRIMARY KEY,
+member_no varchar(20) not null,
+res_Nvm varchar(6) not null default 'none',
 if_res enum('yes','no','none') default 'none',
 check_res enum('yes','no','none') default 'none'
 )engine=InnoDB default character set=utf8;
 
 ALTER TABLE book
 ADD FOREIGN KEY (no) REFERENCES member(no) On Delete Cascade ;
+
+DROP TRIGGER IF EXISTS itemlogger;
+DELIMITER $$
+CREATE TRIGGER itemlogger AFTER INSERT ON member FOR EACH ROW
+BEGIN
+
+INSERT INTO book( member_no) value ( (SELECT no FROM member ORDER BY no DESC LIMIT 1));
+
+END$$
+DELIMITER ;
+
+
 
 insert into member (id, password, name, email, gender, age) values ( 'admin', 'admin', "wowp100@naver.com", "김재민", 'M', 27);
 insert into member (id, password, name, email, gender, age) values 

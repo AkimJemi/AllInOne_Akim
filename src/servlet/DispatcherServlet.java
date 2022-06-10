@@ -187,6 +187,8 @@ public abstract class DispatcherServlet extends HttpServlet {
 		RequestDispatcher rd=null;
 		if (jspPath.contains("init")) 
 			 rd = req.getRequestDispatcher(getJspDirPathInit() +jspPath + ".jsp");
+		else if(jspPath.contains("common/redirect"))
+			rd = req.getRequestDispatcher(jspPath);
 		else 
 			 rd = req.getRequestDispatcher(getJspDirPath() + jspPath + ".jsp");
 		rd.forward(req, resp);

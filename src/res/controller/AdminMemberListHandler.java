@@ -9,11 +9,11 @@ import mvc.command.CommandHandler;
 import res.dto.Member;
 import res.dto.MemberAndBook;
 import res.service.AdminBookService;
-import res.service.MemberService;
+import res.service.AdminMemberService;
 
 public class AdminMemberListHandler implements CommandHandler {
 	private final static String ADMIN_MEMBER_LIST_FORM = "admin/member/list";
-	private MemberService memberService = new MemberService();
+	private AdminMemberService memberService = new AdminMemberService();
 	private AdminBookService adminBookService = new AdminBookService();
 
 	@Override
@@ -34,7 +34,7 @@ public class AdminMemberListHandler implements CommandHandler {
 		ArrayList<MemberAndBook> memberAndBook = new ArrayList<MemberAndBook>();
 
 //		ArrayList<Book> book = new ArrayList<Book>();
-		memberAndBook = adminBookService.selectBookList(memberAndBook);
+		memberAndBook = adminBookService.selectMemberAndBookList(memberAndBook);
 		rq.setAttribute("member", memberAndBook);
 //		System.out.println(book.size());
 //		ArrayList<Member> member = new ArrayList<Member>();

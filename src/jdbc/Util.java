@@ -8,13 +8,13 @@ public class Util {
 		rq.setAttribute("replaceURI", rq.getContextPath() + "/"+ replaceURI);
 		System.out.println(Msg);
 		System.out.println(replaceURI);
-		return rq.getContextPath() +"/common/redirect.jsp";
+		return "/common/redirect.jsp";
 	}
 	
 	public static String redirectMsgAndBack(HttpServletRequest rq, String Msgs) {
 		rq.setAttribute("historyBack", Boolean.TRUE);
 		rq.setAttribute("Msg", Msgs);
-		return rq.getContextPath() +"/common/redirect.jsp";
+		return "/common/redirect.jsp";
 	}
 
 	public static String resultMsg(HttpServletRequest rq, Boolean result, String condition, String T, String F) {
@@ -22,6 +22,6 @@ public class Util {
 			rq.setAttribute(condition +"", T);
 		else
 			rq.setAttribute(condition +"", F);
-		return rq.getContextPath() +"/common/redirect.jsp";
+		return "/common/redirect.jsp";
 	}
 }

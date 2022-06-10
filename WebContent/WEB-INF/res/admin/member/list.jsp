@@ -39,31 +39,20 @@
 				<td>${member.email}</td>
 				<td>${member.age}</td>
 				<td><c:choose>
-						<c:when test="${member.check_res eq 'yes'}">
+						<c:when test="${member.if_res eq 'yes'}">
 							<input type="button"
 								style="background-color: blue; color: white;"
-								onClick="location.href='../book/insert.do?no=${member.no}'"
+								onClick="location.href='<%=request.getContextPath()%>/res/admin/member/list/check_res/update.do?no=${member.no}&type=if_res&yesNo=no'"
 								value="예약" />
 						</c:when>
 						<c:otherwise>
-							<input type="button"
-								style="background-color: red; color: white;"
-								onClick="location.href='../book/insert.do?no=${member.no}'"
+							<input type="button" style="background-color: red; color: white;"
+								onClick="location.href='<%=request.getContextPath()%>/res/admin/member/list/check_res/update.do?no=${member.no}&type=if_res&yesNo=yes'"
 								value="예약" />
 						</c:otherwise>
 					</c:choose></td>
 			</tr>
 		</c:forEach>
-		<%
-		int max = ((ArrayList<Book>) request.getAttribute("book")).size();
-
-		for (int i = 1; i < max; i++) {
-		%>
-		<a><%=max%></a>
-
-		<%
-		}
-		%>
 		<c:forEach var="book" items="${book}">
 			<tr>
 				<td><a href="res/admin/book/detail.do?no=${book.no }">${book.no }</a></td>

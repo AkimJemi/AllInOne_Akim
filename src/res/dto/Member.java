@@ -10,7 +10,7 @@ public class Member {
 	private String gender;
 	private int age;
 
-	public Member(int no, String id, String password, String email, String name, String gender, int age) {
+	public Member(int no, String id, String password, String name,String email, String gender, int age) {
 		this.no = no;
 		this.id = id;
 		this.password = password;
@@ -21,14 +21,22 @@ public class Member {
 
 	}
 
+	public Member(String id, String password, String name, String email, String gender, int age) {
+		this.id = id;
+		this.password = password;
+		this.email = email;
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+	}
+
 	public Member(String id, String password) {
-		super();
 		this.id = id;
 		this.password = password;
 	}
+
 	public Member() {
 	}
-
 
 	public int getNo() {
 		return no;

@@ -9,10 +9,7 @@ body {
 </style>
 <header>
 
-	request.getRequestURL() :
-	<%=request.getRequestURL()%>
-	<br />
-	request.getRequestURI() :
+<h4>request.getRequestURI() :</h4>
 	<%=request.getRequestURI()%>
 	<br />
 	request.getContextPath() :
@@ -50,5 +47,5 @@ body {
 	</table>
 
 
-	<a href='<%=request.getContextPath()%>/res/admin/main.do'>메인 페이지로</a>
+	<a href='<%=request.getContextPath()%>/res/admin/main'>메인 페이지로</a>
 </header>

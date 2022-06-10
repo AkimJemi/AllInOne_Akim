@@ -5,11 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
 import res.dto.Member;
-import res.service.MemberService;
+import res.service.AdminMemberService;
 public class LoginHandler implements CommandHandler {
 	private final static String LOGIN_FORM = "/WEB-INF/res/init/login.jsp";
 
-	private MemberService memberService = new MemberService();
+	private AdminMemberService memberService = new AdminMemberService();
 	@Override
 	public String process(HttpServletRequest rq, HttpServletResponse rp)
 			 {
