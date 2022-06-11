@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/res/tags/resShortcut.tag"%>
+<%@ include file="/WEB-INF/res/tags/resAdminShortcut.tag"%>
 
 <style>
 body {
@@ -35,17 +35,8 @@ body {
 				<td>Components included are scheme, authority, path, query and
 					more</td>
 			</tr>
-			<tr>
-				<td>URI는 URL의 의미를 품고있다. URL(Uniform Resource Locator)은 자원이 실제로
-					존재하는 위치를 가리키며, URI(Uniform Resource Identifier)는 자원의 위치뿐만 아니라 자원에
-					대한 고유 식별자로서 URL을 의미를 포함한다.</td>
-					<td>dd
-					</td>
-			</tr>
-		</tbody>
+			</tbody>
 
 	</table>
-
-
 	<a href='<%=request.getContextPath()%>/res/admin/main'>메인 페이지로</a>
 </header>

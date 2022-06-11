@@ -15,7 +15,7 @@
 			alert('${insertResult}');
 		</script>
 	</c:if>
-	<%@ include file="/WEB-INF/res/tags/header.jsp"%>
+	<%@ include file="/WEB-INF/res/tags/resAdminHeader.jsp"%>
 	<a href="insert">맴버추가</a>
 	<table>
 		<tr>

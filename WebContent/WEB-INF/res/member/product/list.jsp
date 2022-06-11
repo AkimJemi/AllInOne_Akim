@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>res/member/product/list</title>
 </head>
 <body>
-	<script type="text/javascript">
-		location.href = 'res/login.do?route=RESInit';  
-	</script>
+	<%@ include file="/WEB-INF/res/tags/resMemberHeader.jsp"%>
+	
+	<h1>product List</h1>
+
+
 </body>
 </html>

@@ -2,10 +2,8 @@ package servlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import res.container.Container;
-import res.dto.Member;
 
 public class RESDispatcherServlet extends DispatcherServlet {
 	@Override
@@ -34,19 +32,7 @@ public class RESDispatcherServlet extends DispatcherServlet {
 		}
 
 		if (rqUrlBites[3].equals("login.do")) {
-			if (rq.getMethod().equalsIgnoreCase("GET")) {
-				if (rq.getParameter("id") != null && rq.getParameter("password") != null)
-					if (rq.getParameter("id").equals("admin") && rq.getParameter("password").equals("admin"))
-						return "init/main";
-
-				System.out.println("init/login");
-				return "init/login";
-			} else if (rq.getMethod().equalsIgnoreCase("POST")) {
-				Member member = Container.loginService.login(rq.getParameter("id"), rq.getParameter("password"));
-				HttpSession sesson = rq.getSession();
-				sesson.setAttribute("logindedMember", member);
-				return "init/main";
-			}
+			return Container.loginHandler.process(rq, rp);
 		}
 		if (rqUrlBites[2].equals("res")) {
 			if (rqUrlBites[3].equals("main"))
@@ -64,9 +50,9 @@ public class RESDispatcherServlet extends DispatcherServlet {
 					}
 				} else if (rqUrlBites[4].equals("member")) {
 					if (rqUrlBites[5].equals("list")) {
-						 if(rqUrlBites.length==6){
+						if (rqUrlBites.length == 6) {
 							return Container.adminMemberListHandler.process(rq, rp);
-						}else if (rqUrlBites[6].equals("check_res")) {
+						} else if (rqUrlBites[6].equals("check_res")) {
 							if (rqUrlBites[7].equals("update.do")) {
 								return Container.adminBookCheckResUpdateHandler.process(rq, rp);
 							}
@@ -77,8 +63,19 @@ public class RESDispatcherServlet extends DispatcherServlet {
 						return Container.adminMemberListHandler.process(rq, rp);
 					}
 				}
+			} else if (rqUrlBites[3].equals("member")) {
+				if (rqUrlBites[4].equals("login")) {
+					return null;
+				} else if (rqUrlBites[4].equals("main")) {
+					if (rqUrlBites.length == 5)
+						return "member/main";
+
+				} else if (rqUrlBites[4].equals("product")) {
+					if (rqUrlBites[5].equals("list"))
+						return Container.memberProductListHandler.process(rq, rp);
+				}
 			}
 		}
-		return jspPath;
+		return null;
 	}
 }

@@ -16,15 +16,15 @@ table {
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/res/tags/header.jsp" %>
+<%@ include file="/WEB-INF/res/tags/resAdminHeader.jsp" %>
 	<div class="center">시작</div>
 	<table border='1'>
 		<tr>
 			<td>메인 페이지</td>
 		</tr>
 		<tr>
-			<th><a href="book/list">관리자 페이지(5)</a></th>
-			<th><a href="member/list">회원 명단(6)</a></th>
+			<th><a href="book/list">관리자 페이지(6)</a></th>
+			<th><a href="member/list">회원 명단(7)</a></th>
 		</tr>
 		<tr>
 		</tr>

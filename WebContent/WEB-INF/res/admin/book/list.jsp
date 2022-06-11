@@ -8,9 +8,11 @@
 <title>admin.jsp</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/res/tags/header.jsp" %>
+	<%@ include file="/WEB-INF/res/tags/resAdminHeader.jsp"%>
 	<table>
-		<tr>${loginedUser.id } 님 환영합니다</tr>
+		<tr>
+			<td>${loginedUser.id }님 환영합니다</td>
+		</tr>
 		<tr>
 			<th>번호</th>
 			<th>회원번호</th>
@@ -27,8 +29,10 @@
 				<td>${book.res_nvm }</td>
 				<td>${book.if_res }</td>
 				<td>${book.check_res }</td>
-				<td><a href="<%=request.getContextPath()%>/res/admin/book/check_res/update.do?no=${book.no }&type=check_res&yesNo=yes">예약확인</a></td>
-				<td><a href="<%=request.getContextPath()%>/res/admin/book/check_res/update.do?no=${book.no }&type=check_res&yesNo=no">취소하기</a></td>
+				<td><a
+					href="<%=request.getContextPath()%>/res/admin/book/check_res/update.do?no=${book.no }&type=check_res&yesNo=yes">예약확인</a></td>
+				<td><a
+					href="<%=request.getContextPath()%>/res/admin/book/check_res/update.do?no=${book.no }&type=check_res&yesNo=no">취소하기</a></td>
 			</tr>
 		</c:forEach>
 	</table>

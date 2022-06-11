@@ -7,9 +7,9 @@ key['1'] = "<%=request.getContextPath()%>/res/login.do?id=admin&password=admin";
 key['2'] = "<%=request.getContextPath()%>/pom/main";
 // res
 key['3'] = "<%=request.getContextPath()%>/res/main";
-key['4'] = "<%=request.getContextPath()%>/res/admin/main";
-key['5'] = "<%=request.getContextPath()%>/res/admin/book/list";
-key['6'] = "<%=request.getContextPath()%>/res/admin/member/list";
+key['4'] = "<%=request.getContextPath()%>/res/member/main";
+key['5'] = "<%=request.getContextPath()%>/res/member/product/list";
+key['6'] = "<%=request.getContextPath()%>/res/member/myPage";
 
 function getKey(keyStroke) {
 	if ((event.srcElement.tagName != 'INPUT') && (event.srcElement.tagName != 'TEXTAREA')){

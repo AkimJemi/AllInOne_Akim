@@ -12,13 +12,10 @@ public class LoginService {
 	private AdminMemberDAO memberDao = new AdminMemberDAO();
 	private Connection conn;
 
-	public Member login(String id, String password) {
-		Member member = new Member();
+	public Member login(Member member) {
 		try {
 			conn = ConnectionProvider.getConnection();
-			member = memberDao.login(conn, id, password);
-			System.out.println("memberDao");
-			System.out.println(member.getAge());
+			member = memberDao.login(conn, member);
 			if (member == null) {
 				throw new LoginFailException();
 			}

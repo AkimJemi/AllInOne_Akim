@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,31 +8,74 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/res/tags/header.jsp" %>
-	<div><%=request.getParameter("error")%></div>
-		<form method="post" action="login.do">
-			<table width='300' border="1">
-				<tr>
-					<th width="100">ID</th>
-					<td>
-						<input type="text" name="id" size='15' />
-					</td>
-				</tr>
-				<tr>
-					<th>PASSWORD</th>
-					<td>
-						<input type="password" name="password" size='15' />
-					</td>
-				</tr>
-				<tr>
-					<td colspan='2' align='right'>
-						<input type="submit" value="로그인" />
-					</td>
-				</tr>
-			</table>
-		</form>
-		<form method="post" action="login.do?id=admin&password=admin">
-			<input type="submit" value="자동 로그인(1)" />
-		</form>
+<h1>ROUTE : <%=request.getAttribute("route") %></h1>
+	<c:choose>
+		<c:when test="${route eq 'RESInit' }">
+			<%@ include file="../res/tags/resAdminHeader.jsp"%>
+			<form method="post" action="login.do">
+				<table style="width:300;" border="1">
+					<tr>
+						<th width="100">ID</th>
+						<td><input type="text" name="id" size='15' /></td>
+					</tr>
+					<tr>
+						<th>PASSWORD</th>
+						<td><input type="password" name="password" size='15' /></td>
+					</tr>
+					<tr>
+						<td colspan='2' align='right'><input type="submit"
+							value="로그인" /></td>
+					</tr>
+				</table>
+			</form>
+			<form method="post" action="login.do?id=admin&password=admin">
+				<input type="submit" value="자동 로그인(1)" />
+			</form>
+		</c:when>
+		<c:when test="${route eq 'RESMember' }">
+			<%@ include file="../res/tags/resMemberHeader.jsp"%>
+			<form method="post" action="memberLogin.do">
+				<table style="width:300;" border="1">
+					<tr>
+						<th width="100">ID</th>
+						<td><input type="text" name="id" size='15' /></td>
+					</tr>
+					<tr>
+						<th>PASSWORD</th>
+						<td><input type="password" name="password" size='15' /></td>
+					</tr>
+					<tr>
+						<td colspan='2' align='right'><input type="submit"
+							value="로그인" /></td>
+					</tr>
+				</table>
+			</form>
+			<form method="post" action="login.do?id=admin&password=admin">
+				<input type="submit" value="자동 로그인(1)" />
+			</form>
+		</c:when>
+		<c:when test="${route eq 'POMInit' }">
+			<%-- <%@ include file="../res/tags/POMMemberHeader.jsp"%> --%>
+			<form method="post" action="memberLogin.do">
+				<table style="width:300;" border="1">
+					<tr>
+						<th width="100">ID</th>
+						<td><input type="text" name="id" size='15' /></td>
+					</tr>
+					<tr>
+						<th>PASSWORD</th>
+						<td><input type="password" name="password" size='15' /></td>
+					</tr>
+					<tr>
+						<td colspan='2' align='right'><input type="submit"
+							value="로그인" /></td>
+					</tr>
+				</table>
+			</form>
+			<form method="post" action="login.do?id=admin&password=admin">
+				<input type="submit" value="자동 로그인(1)" />
+			</form>
+		</c:when>
+	</c:choose>
 </body>
 </html>

@@ -14,12 +14,12 @@ public class AdminMemberDAO {
 	private ResultSet rs = null;
 	private Member member;
 
-	public boolean checkUser(Connection conn, String id, String password) throws SQLException {
+	public boolean checkUser(Connection conn, Member member) throws SQLException {
 		boolean result = false;
 		try {
 			pstmt = conn.prepareStatement("select * from member where id = ? and password =?");
-			pstmt.setString(1, id);
-			pstmt.setString(2, password);
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getPassword());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = true;
@@ -51,11 +51,11 @@ public class AdminMemberDAO {
 		return members;
 	}
 
-	public Member login(Connection conn, String id, String password) {
+	public Member login(Connection conn, Member member) {
 		try {
 			pstmt = conn.prepareStatement("select * from member where id = ? and password = ? ");
-			pstmt.setString(1, id);
-			pstmt.setString(2, password);
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getPassword());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				member = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),

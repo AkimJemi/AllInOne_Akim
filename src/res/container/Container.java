@@ -1,43 +1,54 @@
 package res.container;
 
-import res.controller.AdminBookUpdateHandler;
 import res.controller.AdminBookListHandler;
+import res.controller.AdminBookUpdateHandler;
 import res.controller.AdminMemberInsertHandler;
 import res.controller.AdminMemberListHandler;
+import res.controller.LoginHandler;
+import res.controller.MemberProductListHandler;
 import res.dao.AdminBookDAO;
-import res.dao.AdminDAO;
 import res.dao.AdminMemberDAO;
 import res.service.AdminBookService;
-import res.service.LoginService;
 import res.service.AdminMemberService;
+import res.service.LoginService;
 
 public class Container {
+	
+	
+	public static LoginHandler loginHandler;
+	public static LoginService loginService;
+	
 	public static AdminBookListHandler adminBookListHandler;
 	public static AdminMemberListHandler adminMemberListHandler;
 	public static AdminBookUpdateHandler adminBookCheckResUpdateHandler;
 	public static AdminMemberInsertHandler adminMemberInsertHandler;
 	
+	public static MemberProductListHandler memberProductListHandler;
+	
+	public static AdminBookService adminBookService;
+	public static AdminMemberService adminMemberService;
 	
 	public static AdminBookDAO adminBookDao;
-	public static AdminDAO adminDao;
 	public static AdminMemberDAO adminMemberDao;
-	public static AdminBookService adminBookService;
-	public static LoginService loginService;
-	public static AdminMemberService memberService;
+	
 	
 	static {
+		loginService = new LoginService();
+		loginHandler = new LoginHandler();
+		
 		adminBookListHandler = new AdminBookListHandler();
 		adminMemberListHandler = new AdminMemberListHandler();
 		adminBookCheckResUpdateHandler = new AdminBookUpdateHandler();
 		adminMemberInsertHandler = new AdminMemberInsertHandler();
 		
-		adminBookDao = new AdminBookDAO();
-		adminDao = new AdminDAO();
-		adminMemberDao = new AdminMemberDAO();
+		memberProductListHandler = new MemberProductListHandler();
 		
 		adminBookService = new AdminBookService();
-		loginService = new LoginService();
-		memberService = new AdminMemberService();
+		adminMemberService = new AdminMemberService();
+		
+		adminBookDao = new AdminBookDAO();
+		adminMemberDao = new AdminMemberDAO();
+		
 		
 		
 	}

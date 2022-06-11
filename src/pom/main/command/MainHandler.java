@@ -85,15 +85,7 @@ public class MainHandler implements CommandHandler {
 			rq.setAttribute("eduList", eduList);
 			rq.setAttribute("workexperience", weList);
 			rq.setAttribute("personnel", personnel);
-		} else if (rq.getParameter("NoSummit") != null) {
-
-		} else {
-//			rq.setAttribute("wrongRoute", Boolean.TRUE);
-//			return MAIN_FORM;
-		}
-
-		
-	
+		} 
 
 		if (rq.getMethod().equalsIgnoreCase("POST"))
 			return processSubmit(rq, rp);

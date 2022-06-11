@@ -34,8 +34,10 @@ public abstract class DispatcherServlet extends HttpServlet {
 				(String) doBeforeActionRs.get("actionMethodName"));
 
 		if (jspPath == null) {
-			resp.getWriter().append("jsp 정보가 없습니다.");
-			return;
+			jspPath = "/common/jspNullPath.jsp";
+//			resp.getWriter().append("jsp 정보가 없습니다.");
+//			return "NullJspPath.jsp";
+			
 		}
 
 		doAfterAction(req, resp, jspPath);
@@ -165,7 +167,7 @@ public abstract class DispatcherServlet extends HttpServlet {
 				req.setAttribute("alertMsg", "로그아웃 후 이용해주세요.");
 				req.setAttribute("historyBack", true);
 
-				RequestDispatcher rd = req.getRequestDispatcher(getJspDirPath() + "/common/redirect.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher(prefix() + "/common/redirect.jsp");
 				rd.forward(req, resp);
 			}
 		}
@@ -186,18 +188,22 @@ public abstract class DispatcherServlet extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher rd=null;
 		if (jspPath.contains("init")) 
-			 rd = req.getRequestDispatcher(getJspDirPathInit() +jspPath + ".jsp");
-		else if(jspPath.contains("common/redirect"))
+			 rd = req.getRequestDispatcher(initPrefix() +jspPath + suffix());
+		else if(jspPath.contains("common"))
 			rd = req.getRequestDispatcher(jspPath);
 		else 
-			 rd = req.getRequestDispatcher(getJspDirPath() + jspPath + ".jsp");
+			 rd = req.getRequestDispatcher(prefix() + jspPath + suffix());
+		
 		rd.forward(req, resp);
 	}
 
-	private String getJspDirPath() {
+	private String prefix() {
 		return "/WEB-INF/res/";
 	}
-	private String getJspDirPathInit() {
+	private String initPrefix() {
 		return "/WEB-INF/";
+	}
+	private String suffix() {
+		return ".jsp";
 	}
 }

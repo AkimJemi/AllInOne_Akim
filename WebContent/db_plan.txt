@@ -1,0 +1,28 @@
+java 17
+js
+spring boot
+지라
+create table product(
+no INT(5) AUTO_INCREMENT PRIMARY KEY,
+gr_no varchar(20) not null,
+res_Nvm varchar(6) not null default 'none',
+if_res enum('yes','no','none') default 'none',
+check_res enum('yes','no','none') default 'none'
+)engine=InnoDB default character set=utf8;
+
+
+hotel
+
+room
+
+
+booked_room
+
+
+productA
+
+
+productB
+
+book
+
