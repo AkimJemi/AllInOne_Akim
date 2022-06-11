@@ -14,5 +14,5 @@ body {
 	request.getContextPath() :
 	<%=request.getContextPath()%>
 	<br />
-	<a href='<%=request.getContextPath()%>/res/member/main'>메인 페이지로</a>
+	<a href='<%=request.getContextPath()%>/res/main'>메인 페이지로</a>
 </header>
