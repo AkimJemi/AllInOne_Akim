@@ -14,5 +14,10 @@ body {
 	request.getContextPath() :
 	<%=request.getContextPath()%>
 	<br />
+	<br />
+	ID : ${sessionScope.logindedMember.id }
+	<br />
+	Password : ${sessionScope.logindedMember.password }
+	<br />
 	<a href='<%=request.getContextPath()%>/res/main'>메인 페이지로</a>
 </header>

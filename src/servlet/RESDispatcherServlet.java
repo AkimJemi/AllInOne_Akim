@@ -68,7 +68,7 @@ public class RESDispatcherServlet extends DispatcherServlet {
 					return null;
 				} else if (rqUrlBites[4].equals("main")) {
 					if (rqUrlBites.length == 5)
-						return "member/main";
+						return Container.memberMainHandler.process(rq, rp);
 
 				} else if (rqUrlBites[4].equals("product")) {
 					if (rqUrlBites[5].equals("list"))

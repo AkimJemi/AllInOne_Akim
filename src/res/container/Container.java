@@ -23,6 +23,7 @@ public class Container {
 	public static AdminBookUpdateHandler adminBookCheckResUpdateHandler;
 	public static AdminMemberInsertHandler adminMemberInsertHandler;
 	
+	public static MemberMainHandler memberMainHandler;
 	public static MemberProductListHandler memberProductListHandler;
 	
 	public static AdminBookService adminBookService;
@@ -41,6 +42,7 @@ public class Container {
 		adminBookCheckResUpdateHandler = new AdminBookUpdateHandler();
 		adminMemberInsertHandler = new AdminMemberInsertHandler();
 		
+		memberMainHandler = new MemberMainHandler();
 		memberProductListHandler = new MemberProductListHandler();
 		
 		adminBookService = new AdminBookService();
