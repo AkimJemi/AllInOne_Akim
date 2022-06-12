@@ -1,55 +1,80 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.StringReader;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.dbcp2.ConnectionFactory;
+import org.apache.commons.dbcp2.DriverManagerConnectionFactory;
+import org.apache.commons.dbcp2.PoolableConnection;
+import org.apache.commons.dbcp2.PoolableConnectionFactory;
+import org.apache.commons.dbcp2.PoolingDriver;
+import org.apache.commons.pool2.impl.GenericObjectPool;
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+
+import jdbc.Util;
+
 public abstract class DispatcherServlet extends HttpServlet {
+	static String jdbcUrl;
+
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		run(req, resp);
+	public void init() throws ServletException {
+		RESDBCPInitListener();
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
+	protected void doGet(HttpServletRequest rq, HttpServletResponse rp) throws ServletException, IOException {
+		run(rq, rp);
 	}
 
-	public void run(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Map<String, Object> doBeforeActionRs = doBeforeAction(req, resp);
+	@Override
+	protected void doPost(HttpServletRequest rq, HttpServletResponse rp) throws ServletException, IOException {
+		doGet(rq, rp);
+	}
+
+	public void run(HttpServletRequest rq, HttpServletResponse rp) throws ServletException, IOException {
+		Map<String, Object> doBeforeActionRs = doBeforeAction(rq, rp);
 
 		if (doBeforeActionRs == null) {
 			return;
 		}
 
-		String jspPath = doAction(req, resp, (String) doBeforeActionRs.get("controllerName"),
+		String jspPath = doAction(rq, rp, (String) doBeforeActionRs.get("controllerName"),
 				(String) doBeforeActionRs.get("actionMethodName"));
 
 		if (jspPath == null) {
 			jspPath = "/common/jspNullPath.jsp";
-//			resp.getWriter().append("jsp 정보가 없습니다.");
+//			rp.getWriter().append("jsp 정보가 없습니다.");
 //			return "NullJspPath.jsp";
-			
+
 		}
 
-		doAfterAction(req, resp, jspPath);
+		doAfterAction(rq, rp, jspPath);
 	}
 
-	private Map<String, Object> doBeforeAction(HttpServletRequest req, HttpServletResponse resp)
+	private Map<String, Object> doBeforeAction(HttpServletRequest rq, HttpServletResponse rp)
 			throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html; charset=UTF-8");
+		rq.setCharacterEncoding("UTF-8");
+		rp.setContentType("text/html; charset=UTF-8");
 
-		String requestUri = req.getRequestURI();
-		String[] requestUriBits = requestUri.split("/");
+		if (!Util.getJdbcUrl().contains("akim_res")) {
+			RESDBCPInitListener();
+		}
+
+		String rquestUri = rq.getRequestURI();
+		String[] rquestUriBits = rquestUri.split("/");
 
 		int minBitsCount = 4;
 //
@@ -57,8 +82,8 @@ public abstract class DispatcherServlet extends HttpServlet {
 //			minBitsCount = 4;
 //		}
 
-		if (requestUriBits.length < minBitsCount) {
-			resp.getWriter().append("올바른 요청이 아닙니다.");
+		if (rquestUriBits.length < minBitsCount) {
+			rp.getWriter().append("올바른 요청이 아닙니다.");
 			return null;
 		}
 
@@ -79,9 +104,9 @@ public abstract class DispatcherServlet extends HttpServlet {
 //			actionMethodNameIndex = 3;
 //		}
 
-		String controllerTypeName = requestUriBits[controllerTypeNameIndex];
-		String controllerName = requestUriBits[controllerNameIndex];
-		String actionMethodName = requestUriBits[actionMethodNameIndex];
+		String controllerTypeName = rquestUriBits[controllerTypeNameIndex];
+		String controllerName = rquestUriBits[controllerNameIndex];
+		String actionMethodName = rquestUriBits[actionMethodNameIndex];
 //
 		String actionUrl = "/" + controllerTypeName + "/" + controllerName + "/" + actionMethodName;
 //
@@ -90,7 +115,7 @@ public abstract class DispatcherServlet extends HttpServlet {
 //		int loginedMemberId = 0;
 //		Member loginedMember = null;
 //
-//		HttpSession session = req.getSession();
+//		HttpSession session = rq.getSession();
 //
 //		if (session.getAttribute("loginedMemberId") != null) {
 //			isLogined = true;
@@ -98,26 +123,26 @@ public abstract class DispatcherServlet extends HttpServlet {
 //			loginedMember = Container.memberService.getMemberById(loginedMemberId);
 //		}
 //
-//		req.setAttribute("isLogined", isLogined);
-//		req.setAttribute("loginedMemberId", loginedMemberId);
-//		req.setAttribute("loginedMember", loginedMember);
+//		rq.setAttribute("isLogined", isLogined);
+//		rq.setAttribute("loginedMemberId", loginedMemberId);
+//		rq.setAttribute("loginedMember", loginedMember);
 //
-//		String currentUrl = req.getRequestURI();
+//		String currentUrl = rq.getRequestURI();
 //
-//		if (req.getQueryString() != null) {
-//			currentUrl += "?" + req.getQueryString();
+//		if (rq.getQueryString() != null) {
+//			currentUrl += "?" + rq.getQueryString();
 //		}
 
 //		String encodedCurrentUrl = Util.getUrlEncoded(currentUrl);
 //
-//		req.setAttribute("currentUrl", currentUrl);
-//		req.setAttribute("encodedCurrentUrl", encodedCurrentUrl);
+//		rq.setAttribute("currentUrl", currentUrl);
+//		rq.setAttribute("encodedCurrentUrl", encodedCurrentUrl);
 //		
-//		Map<String, Object> param = Util.getParamMap(req);
+//		Map<String, Object> param = Util.getParamMap(rq);
 //		String paramJson = Util.getJsonText(param);
 //		
-//		req.setAttribute("paramMap", param);
-//		req.setAttribute("paramJson", paramJson);
+//		rq.setAttribute("paramMap", param);
+//		rq.setAttribute("paramJson", paramJson);
 
 		// 데이터 추가 인터셉터 끝
 
@@ -139,15 +164,14 @@ public abstract class DispatcherServlet extends HttpServlet {
 		needToLoginActionUrls.add("/usr/reply/doDelete");
 
 //		if (needToLoginActionUrls.contains(actionUrl)) {
-//			if ((boolean) req.getAttribute("isLogined") == false) {
-//				req.setAttribute("alertMsg", "로그인 후 이용해주세요.");
-//				req.setAttribute("replaceUrl", "../member/login?afterLoginUrl=" + encodedCurrentUrl);
+//			if ((boolean) rq.getAttribute("isLogined") == false) {
+//				rq.setAttribute("alertMsg", "로그인 후 이용해주세요.");
+//				rq.setAttribute("replaceUrl", "../member/login?afterLoginUrl=" + encodedCurrentUrl);
 //
-//				RequestDispatcher rd = req.getRequestDispatcher(getJspDirPath() + "/common/redirect.jsp");
-//				rd.forward(req, resp);
+//				RequestDispatcher rd = rq.getRequestDispatcher(getJspDirPath() + "/common/redirect.jsp");
+//				rd.forward(rq, rp);
 //			}
 //		}
-
 		// 로그인 필요 필터링 인터셉터 끝
 
 		// 로그아웃 필요 필터링 인터셉터 시작
@@ -163,17 +187,16 @@ public abstract class DispatcherServlet extends HttpServlet {
 		needToLogoutActionUrls.add("/usr/member/doFindLoginPw");
 
 		if (needToLogoutActionUrls.contains(actionUrl)) {
-			if ((boolean) req.getAttribute("isLogined")) {
-				req.setAttribute("alertMsg", "로그아웃 후 이용해주세요.");
-				req.setAttribute("historyBack", true);
+			if ((boolean) rq.getAttribute("isLogined")) {
+				rq.setAttribute("alertMsg", "로그아웃 후 이용해주세요.");
+				rq.setAttribute("historyBack", true);
 
-				RequestDispatcher rd = req.getRequestDispatcher(prefix() + "/common/redirect.jsp");
-				rd.forward(req, resp);
+				RequestDispatcher rd = rq.getRequestDispatcher(prefix() + "/common/redirect.jsp");
+				rd.forward(rq, rp);
 			}
 		}
 
 		// 로그아웃 필요 필터링 인터셉터 끝
-
 		Map<String, Object> rs = new HashMap<>();
 		rs.put("controllerName", controllerName);
 		rs.put("actionMethodName", actionMethodName);
@@ -181,29 +204,98 @@ public abstract class DispatcherServlet extends HttpServlet {
 		return rs;
 	}
 
-	protected abstract String doAction(HttpServletRequest req, HttpServletResponse resp, String controllerName,
+	protected abstract String doAction(HttpServletRequest rq, HttpServletResponse rp, String controllerName,
 			String actionMethodName);
 
-	private void doAfterAction(HttpServletRequest req, HttpServletResponse resp, String jspPath)
+	private void doAfterAction(HttpServletRequest rq, HttpServletResponse rp, String jspPath)
 			throws ServletException, IOException {
-		RequestDispatcher rd=null;
-		if (jspPath.contains("init")) 
-			 rd = req.getRequestDispatcher(initPrefix() +jspPath + suffix());
-		else if(jspPath.contains("common"))
-			rd = req.getRequestDispatcher(jspPath);
-		else 
-			 rd = req.getRequestDispatcher(prefix() + jspPath + suffix());
-		
-		rd.forward(req, resp);
+		RequestDispatcher rd = null;
+		if (jspPath.contains("init"))
+			rd = rq.getRequestDispatcher(initPrefix() + jspPath + suffix());
+		else if (jspPath.contains("common"))
+			rd = rq.getRequestDispatcher(jspPath);
+		else
+			rd = rq.getRequestDispatcher(prefix() + jspPath + suffix());
+
+		rd.forward(rq, rp);
 	}
 
 	private String prefix() {
 		return "/WEB-INF/res/";
 	}
+
 	private String initPrefix() {
 		return "/WEB-INF/";
 	}
+
 	private String suffix() {
 		return ".jsp";
 	}
+
+	protected void RESDBCPInitListener() {
+		ServletContextEvent sce = new ServletContextEvent(getServletContext());
+		String poolConfig = sce.getServletContext().getInitParameter("poolConfig");
+		Properties prop = new Properties();
+		try {
+			prop.load(new StringReader(poolConfig));
+		} catch (IOException e) {
+			throw new RuntimeException("config load fail", e);
+		}
+		loadJDBCDriver(prop);
+		initConnection(prop);
+	}
+
+	private void loadJDBCDriver(Properties prop) {
+		String driverClass = prop.getProperty("jdbcdriver");
+		try {
+			Class.forName(driverClass);
+		} catch (ClassNotFoundException ex) {
+			throw new RuntimeException("fail to load JDBC Driver", ex);
+		}
+	}
+
+	private void initConnection(Properties prop) {
+		try {
+			jdbcUrl = prop.getProperty("jdbcUrl");
+			Util.setJdbcUrl(jdbcUrl);
+			String username = prop.getProperty("dbUser");
+			String pw = prop.getProperty("dbPass");
+
+			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcUrl, username, pw);
+
+			PoolableConnectionFactory poolableConnFactroy = new PoolableConnectionFactory(connFactory, null);
+			String validationQuery = prop.getProperty("validationQuery");
+			if (validationQuery != null && !validationQuery.isEmpty()) {
+				poolableConnFactroy.setValidationQuery(validationQuery);
+			}
+
+			GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
+			poolConfig.setTimeBetweenEvictionRunsMillis(10001 * 601 * 5L);
+			poolConfig.setTestWhileIdle(true);
+			int minIdle = getIntProperty(prop, "minIdle", 5);
+			poolConfig.setMinIdle(minIdle);
+			int maxTotal = getIntProperty(prop, "maxTotal", 50);
+			poolConfig.setMaxTotal(maxTotal);
+
+			GenericObjectPool<PoolableConnection> connentionPool = new GenericObjectPool<>(poolableConnFactroy,
+					poolConfig);
+			poolableConnFactroy.setPool(connentionPool);
+
+			Class.forName("org.apache.commons.dbcp2.PoolingDriver");
+			PoolingDriver driver = (PoolingDriver) DriverManager.getDriver("jdbc:apache:commons:dbcp:");
+
+			String poolName = prop.getProperty("poolName");
+			driver.registerPool(poolName, connentionPool);
+		} catch (Exception e) {
+			throw new RuntimeException();
+		}
+	}
+
+	private int getIntProperty(Properties prop, String propName, int defaultValue) {
+		String value = prop.getProperty(propName);
+		if (value == null)
+			return defaultValue;
+		return Integer.parseInt(value);
+	}
+
 }

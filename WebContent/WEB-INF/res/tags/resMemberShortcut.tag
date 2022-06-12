@@ -3,7 +3,7 @@ var key = new Array();
 // 로그인
 key['1'] = "<%=request.getContextPath()%>/res/login.do?id=admin&password=admin";
 // pom
-key['2'] = "<%=request.getContextPath()%>/pom/main?route=POMInit";
+key['2'] = "<%=request.getContextPath()%>/pom/main";
 // res
 key['3'] = "<%=request.getContextPath()%>/res/main";
 key['4'] = "<%=request.getContextPath()%>/res/member/main";

@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="../res/tags/resAdminHeader.jsp" %>
-	<a href="pom/main">pom[2]</a>
-	<a href="res/main">res[3]</a>
+<%@ include file="../res/tags/resAdminHeader.tag" %>
+	<a href="../pom/main">pom[2]</a>
+	<a href="main">res[3]</a>
 </body>
 </html>

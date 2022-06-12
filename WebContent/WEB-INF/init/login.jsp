@@ -10,9 +10,10 @@
 <body>
 <h1>ROUTE : <%=request.getAttribute("route") %></h1>
 	<c:choose>
-		<c:when test="${route eq 'RESInit' }">
-			<%@ include file="../res/tags/resAdminHeader.jsp"%>
+		<c:when test="${route eq 'init' }">
+			<%@ include file="/WEB-INF/res/tags/resAdminHeader.tag"%>
 			<form method="post" action="login.do">
+			[RESInit]
 				<table style="width:300;" border="1">
 					<tr>
 						<th width="100">ID</th>
@@ -33,8 +34,9 @@
 			</form>
 		</c:when>
 		<c:when test="${route eq 'RESMember' }">
-			<%@ include file="../res/tags/resMemberHeader.jsp"%>
+			<%@ include file="/WEB-INF/res/tags/resMemberHeader.tag"%>
 			<form method="post" action="memberLogin.do">
+			[RESMember]
 				<table style="width:300;" border="1">
 					<tr>
 						<th width="100">ID</th>
@@ -55,8 +57,9 @@
 			</form>
 		</c:when>
 		<c:when test="${route eq 'POMInit' }">
-			<%-- <%@ include file="../res/tags/POMMemberHeader.jsp"%> --%>
-			<form method="post" action="memberLogin.do">
+			<%@ include file="/WEB-INF/pom/tags/POMMemberHeader.tag"%> 
+			<form method="post" action="main">
+			[POMInit]
 				<table style="width:300;" border="1">
 					<tr>
 						<th width="100">ID</th>
@@ -72,8 +75,8 @@
 					</tr>
 				</table>
 			</form>
-			<form method="post" action="login.do?id=admin&password=admin">
-				<input type="submit" value="자동 로그인(1)" />
+			<form method="post" action="main?id=admin&password=admin">
+				<input type="submit" value="자동 로그인(3)" />
 			</form>
 		</c:when>
 	</c:choose>

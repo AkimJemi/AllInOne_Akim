@@ -1,6 +1,6 @@
 package zJavaPractice;
 
-public class MainDispacherServlet extends DispatcherServlet{
+public class MainDispacherServlet extends DispatcherServlet2{
 
 	@Override
 	protected String doAction() {

@@ -82,4 +82,20 @@ public class UserService {
 		}
 		return result;
 	}
+
+	public boolean login(User user) {
+		Boolean result = false;
+		try {
+			conn = ConnectionProvider.getConnection();
+			System.out.println("test2");
+			result = userDao.login(conn, user);
+		} catch (Exception e) {
+			System.out.println("error : userDao.InsertAllLic()");
+			System.out.println(e.getMessage());
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		System.out.println("test5 : " + result);
+		return result;
+	}
 }

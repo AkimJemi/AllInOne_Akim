@@ -174,7 +174,7 @@ public class UserDAO {
 				return true;
 			}
 		} catch (Exception e) {
-			System.out.println("error : WEDAO.ifweno_Exist()");
+			System.out.println("error : UserDAO.ifweno_Exist()");
 			System.out.println(e.getMessage());
 		} finally {
 			JdbcUtil.close(pstmt, rs);
@@ -191,7 +191,28 @@ public class UserDAO {
 				return true;
 			}
 		} catch (Exception e) {
-			System.out.println("error : WEDAO.ifweno_Exist()");
+			System.out.println("error : UserDAO.ifweno_Exist()");
+			System.out.println(e.getMessage());
+		} finally {
+			JdbcUtil.close(pstmt, rs);
+		}
+		return false;
+	}
+
+	public Boolean login(Connection conn, User user) {
+		try {
+			pstmt = conn.prepareStatement("select * from user where id = ? and password = ?");
+			pstmt.setString(1, user.getId());
+			pstmt.setString(2, user.getPassword());
+			System.out.println("test3");
+			rs = pstmt.executeQuery();
+			System.out.println("test4");
+			if (rs.next()) {
+				System.out.println("22");
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println("error : UserDAO.login()");
 			System.out.println(e.getMessage());
 		} finally {
 			JdbcUtil.close(pstmt, rs);

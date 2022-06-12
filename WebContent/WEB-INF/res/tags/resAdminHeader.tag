@@ -1,14 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/res/tags/resAdminShortcut.tag"%>
-
 <style>
 body {
 	font-size: 23px;
 }
 </style>
 <header>
-
 <h4>request.getRequestURI() :</h4>
 	<%=request.getRequestURI()%>
 	<br />

@@ -1,16 +1,13 @@
 <script type="text/javascript">
-//메인 단축키
-var key = new Array();
-// 로그인
+var key = new Array();	
 key['1'] = "<%=request.getContextPath()%>/res/login.do?id=admin&password=admin";
 // pom
-key['2'] = "<%=request.getContextPath()%>/pom/main";
+key['2'] = "<%=request.getContextPath()%>/pom/main?route=POMInit";
 // res
-key['3'] = "<%=request.getContextPath()%>/res/main";
-key['4'] = "<%=request.getContextPath()%>/res/member/main";
-key['5'] = "<%=request.getContextPath()%>/res/admin/main";
-key['6'] = "<%=request.getContextPath()%>/res/admin/book/list";
-key['7'] = "<%=request.getContextPath()%>/res/admin/member/list";
+key['3'] = "<%=request.getContextPath()%>/pom/login?id=admin&password=admin";
+key['4'] = "<%=request.getContextPath()%>/pom/member/main";
+key['5'] = "<%=request.getContextPath()%>/pom/member/product/list";
+key['6'] = "<%=request.getContextPath()%>/pom/member/myPage";
 
 function getKey(keyStroke) {
 	if ((event.srcElement.tagName != 'INPUT') && (event.srcElement.tagName != 'TEXTAREA')){

@@ -4,7 +4,10 @@ import java.sql.Date;
 
 public class User {
 	
+
 	private int no;
+	private String id;
+	private String password;
 	private String filename;
 	private String filerealname;
 	private String name;
@@ -25,6 +28,10 @@ public class User {
 	private int disabled_grade;
 	private Date disabled_day;
 	
+	public User(String id, String password) {
+		this.id = id;
+		this.password = password;
+	}
 	
 	public User(int no, String filename, String filerealname, String name, int reg_num, String phone, String addr, String email,
 			String school_name, String school_major, Date school_out, int tall, int weight, String eye_l, String eye_r,
@@ -56,6 +63,22 @@ public class User {
 	public int getNo() {
 		return no;
 	}
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getFilename() {
 		return filename;
 	}

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/res/tags/resAdminHeader.jsp" %>
+<%@ include file="/WEB-INF/res/tags/resAdminHeader.tag" %>
 <center><h1>jspPathError</h1></center>
 key['3'] = "<%=request.getContextPath()%>/res/main";
 <br/>

@@ -11,20 +11,7 @@ public class RESDispatcherServlet extends DispatcherServlet {
 			String actionMethodName) {
 		String rqUrl = rq.getRequestURI();
 		String jspPath = null;
-		System.out.println("controllerName : " + controllerName);
-		System.out.println("actionMethodName : " + actionMethodName);
 		String[] rqUrlBites = rqUrl.split("/");
-		// project [1]
-		// Controller [2]
-		// method [3]
-///res/login.do=res.admin.book.command.AdminBookHandler
-///res/admin/main.do=res.admin.main.command.AdminMainHandler
-///res/admin/member/list.do=res.admin.member.command.AdminMemberListHandler
-///res/admin/   member/detail.do=res.admin.member.command.AdminMemberDetailHandler
-///res/admin/book/insert.do=res.admin.book.command.AdminBookInsertHandler
-///res/admin/book/list.do=res.admin.book.command.AdminBookListHandler
-///res/admin/book/check_res/update.do=res.admin.book.command.AdminBookCheckResUpdateHandler
-///mysql.do=mvc.command.MySQLHandler
 		System.out.println(rqUrl);
 		System.out.println("rqUrlBites.length : " + rqUrlBites.length);
 		for (int i = 1; i < rqUrlBites.length; i++) {

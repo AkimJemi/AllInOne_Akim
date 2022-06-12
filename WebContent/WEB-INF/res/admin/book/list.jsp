@@ -8,7 +8,7 @@
 <title>admin.jsp</title>
 </head>
 <body>
-	<%@ include file="/WEB-INF/res/tags/resAdminHeader.jsp"%>
+	<%@ include file="/WEB-INF/res/tags/resAdminHeader.tag"%>
 	<table>
 		<tr>
 			<td>${loginedUser.id }님 환영합니다</td>

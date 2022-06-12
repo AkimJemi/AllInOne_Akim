@@ -16,7 +16,7 @@ table {
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/res/tags/resAdminHeader.jsp" %>
+<%@ include file="/WEB-INF/res/tags/resAdminHeader.tag" %>
 	<div class="center">시작</div>
 	<table border='1'>
 		<tr>

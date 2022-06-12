@@ -1,6 +1,6 @@
 package zJavaPractice;
 
-public abstract class DispatcherServlet {
+public abstract class DispatcherServlet2 {
 	public void doGett() {
 		run();
 	}
@@ -9,7 +9,7 @@ public abstract class DispatcherServlet {
 		run();
 	}
 
-	public DispatcherServlet() {
+	public DispatcherServlet2() {
 		System.out.println("init()");
 	}
 

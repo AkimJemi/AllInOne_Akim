@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/pom/tags/POMMemberHeader.tag=UTF-8
+encoding//WebContent/WEB-INF/res/tags/resAdminHeader.tag=UTF-8
 encoding//WebContent/WEB-INF/res/tags/resAdminShortcut.tag=UTF-8
+encoding//WebContent/WEB-INF/res/tags/resMemberHeader.tag=UTF-8

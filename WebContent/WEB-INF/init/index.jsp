@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		location.href = 'res/login.do?route=RESInit';  
+		location.href = 'res/login.do';  
 	</script>
 </body>
 </html>

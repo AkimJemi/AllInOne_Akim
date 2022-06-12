@@ -15,8 +15,7 @@ public class LoginHandler implements CommandHandler {
 	public String process(HttpServletRequest rq, HttpServletResponse rp) {
 		if (rq.getParameter("id") != null && rq.getParameter("password") != null)
 			if (rq.getParameter("id").equals("admin") && rq.getParameter("password").equals("admin")) {
-				String id = rq.getParameter("id");
-				String password = rq.getParameter("password");
+				String id = rq.getParameter("id"), password = rq.getParameter("password");
 				Member member = new Member(id, password);
 				member = Container.loginService.login(member);
 				HttpSession sesson = rq.getSession();
@@ -33,7 +32,8 @@ public class LoginHandler implements CommandHandler {
 	}
 
 	private String processForm(HttpServletRequest rq, HttpServletResponse rp) {
-		rq.setAttribute("route", rq.getParameter("route"));
+		if(rq.getAttribute("route") == null)
+			rq.setAttribute("route", "init");
 		return LOGIN_FORM;
 	}
 

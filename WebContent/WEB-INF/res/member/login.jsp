@@ -7,7 +7,7 @@
 <title>res/member/login.jsp</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/res/tags/resMemberHeader.jsp"%>
+<%@ include file="/WEB-INF/res/tags/resMemberHeader.tag"%>
 
 
 

@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	<%@ include file="/WEB-INF/res/tags/resAdminHeader.jsp"%>
+	<%@ include file="/WEB-INF/res/tags/resAdminHeader.tag"%>
 	<%
 	String readonly = "";
 	String disabled = "";

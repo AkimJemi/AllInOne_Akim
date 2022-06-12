@@ -7,7 +7,7 @@
 <title>res/member/main</title>
 </head>
 <body>
-	<%@ include file="/WEB-INF/res/tags/resMemberHeader.jsp"%>
+	<%@ include file="/WEB-INF/res/tags/resMemberHeader.tag"%>
 	<div><a href="product/list">Product List[5]</a></div>
 	<div><a href="myPage">myPage[6]</a></div>
 </body>
