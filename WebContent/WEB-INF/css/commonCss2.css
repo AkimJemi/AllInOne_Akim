@@ -1,0 +1,12 @@
+@charset "UTF-8";
+main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	gap: 20%;
+	background-color: red;
+}
+a{
+	text-decoration: none;
+}
